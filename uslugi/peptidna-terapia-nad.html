@@ -314,7 +314,7 @@ document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 
   // Delta-time lerp — frame-rate independent, smooth on any PC
   let lastTime = 0;
-  const SPEED = 4.5; // higher = faster catch-up
+  const SPEED = 8; // higher = faster catch-up
 
   function lerp(a, b, t) { return a + (b - a) * t; }
 
@@ -363,15 +363,15 @@ document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 
     // Title: smooth split + fade
     const tx = p * (mob ? 50 : 100);
-    line1.style.transform = 'translateX(-' + tx + 'vw)';
-    line2.style.transform = 'translateX(' + tx + 'vw)';
+    line1.style.transform = 'translate3d(-' + tx + 'vw,0,0)';
+    line2.style.transform = 'translate3d(' + tx + 'vw,0,0)';
     const titleOp = Math.max(1 - p * 2.2, 0);
     line1.style.opacity = titleOp;
     line2.style.opacity = titleOp;
     const badge = document.getElementById('seh-badge');
     const sub = document.getElementById('seh-sub');
     if (badge) badge.style.opacity = titleOp;
-    if (sub) { sub.style.opacity = titleOp; sub.style.transform = 'translateY(' + (p * 20) + 'px)'; }
+    if (sub) { sub.style.opacity = titleOp; sub.style.transform = 'translate3d(0,' + (p * 20) + 'px,0)'; }
 
     hint.style.opacity = Math.max(1 - p * 4, 0);
 
