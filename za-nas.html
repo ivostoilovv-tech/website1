@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html class="light" lang="bg">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>За Д-р Иво Костов — Специалист по дълголетие</title>
+<meta name="description" content="Д-р Иво Костов, специалист по дълголетие и анестезиология. Магистър по AI. Над 20 години опит.">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "primary": "#001e40",
+        "primary-container": "#003366",
+        "on-primary": "#ffffff",
+        "on-primary-container": "#799dd6",
+        "secondary": "#00696b",
+        "secondary-container": "#56f5f8",
+        "on-secondary": "#ffffff",
+        "on-secondary-container": "#006e70",
+        "tertiary": "#002324",
+        "tertiary-container": "#003a3b",
+        "tertiary-fixed": "#6af7fa",
+        "tertiary-fixed-dim": "#46dadd",
+        "secondary-fixed": "#5af8fb",
+        "secondary-fixed-dim": "#2ddbde",
+        "primary-fixed": "#d5e3ff",
+        "primary-fixed-dim": "#a7c8ff",
+        "surface": "#f7f9fb",
+        "surface-container-low": "#f2f4f6",
+        "surface-container": "#eceef0",
+        "surface-container-high": "#e6e8ea",
+        "surface-container-lowest": "#ffffff",
+        "on-surface": "#191c1e",
+        "on-surface-variant": "#43474f",
+        "outline": "#737780",
+        "outline-variant": "#c3c6d1",
+        "error": "#ba1a1a",
+        "error-container": "#ffdad6",
+        "surface-tint": "#3a5f94",
+      },
+      fontFamily: {
+        "headline": ["Manrope"],
+        "body": ["Inter"],
+      },
+      borderRadius: {
+        "DEFAULT": "0.25rem",
+        "lg": "0.5rem",
+        "xl": "0.75rem",
+        "2xl": "1.5rem",
+        "3xl": "2rem",
+        "full": "9999px",
+      },
+    },
+  },
+}
+</script>
+<style>
+.material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+.text-gradient { background: linear-gradient(to right, #001e40, #00696b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
+.reveal.active { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 100ms; }
+.reveal-delay-2 { transition-delay: 200ms; }
+.reveal-delay-3 { transition-delay: 300ms; }
+.reveal-delay-4 { transition-delay: 400ms; }
+</style>
+</head>
+<body class="bg-surface font-body text-on-surface selection:bg-secondary-container">
+
+<!-- Nav -->
+<main class="pt-20">
+
+<!-- ===== HERO ===== -->
+<section class="relative min-h-[600px] flex items-center overflow-hidden bg-primary text-on-primary">
+  <div class="absolute inset-0 z-0">
+    <img class="w-full h-full object-cover opacity-20" src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=1600&h=900&fit=crop" alt="Medical background">
+    <div class="absolute inset-0 bg-gradient-to-r from-primary via-primary/90 to-transparent"></div>
+  </div>
+  <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10 py-24">
+    <div class="max-w-2xl space-y-6 reveal">
+      <div class="inline-flex items-center space-x-2 bg-white/10 px-4 py-1.5 rounded-full">
+        <span class="material-symbols-outlined text-secondary-fixed text-sm" style="font-variation-settings: 'FILL' 1;">person</span>
+        <span class="text-secondary-fixed font-semibold text-xs uppercase tracking-widest">За нас</span>
+      </div>
+      <h1 class="text-5xl md:text-7xl font-headline font-extrabold leading-[1.08] tracking-tight">
+        Медицина, която<br><span class="text-secondary-fixed">мисли напред</span>
+      </h1>
+      <p class="text-xl text-primary-fixed-dim max-w-xl leading-relaxed">
+        Д-р Иво Костов съчетава опита си в интензивната медицина с изкуствен интелект, за да предлага грижа, която предотвратява, а не само лекува.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BIO SECTION ===== -->
+<section class="py-24 bg-surface">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <div class="flex flex-col lg:flex-row gap-16 items-start">
+      <div class="lg:w-1/3 lg:sticky lg:top-32 reveal">
+        <div class="rounded-[2rem] overflow-hidden shadow-xl mb-6">
+          <img class="w-full h-[440px] object-cover" src="images/dr-kostov.jpg" alt="Д-р Иво Костов" loading="lazy">
+        </div>
+        <div class="flex flex-wrap gap-2 mt-4">
+          <span class="bg-secondary/10 text-secondary text-xs font-bold px-3 py-1.5 rounded-full">20+ години опит</span>
+          <span class="bg-secondary/10 text-secondary text-xs font-bold px-3 py-1.5 rounded-full">10+ специализации</span>
+          <span class="bg-secondary/10 text-secondary text-xs font-bold px-3 py-1.5 rounded-full">AI медицина</span>
+          <span class="bg-secondary/10 text-secondary text-xs font-bold px-3 py-1.5 rounded-full">Магистър AI</span>
+        </div>
+      </div>
+      <div class="lg:w-2/3 space-y-8 reveal reveal-delay-1">
+        <p class="text-secondary font-bold text-xs uppercase tracking-widest">Пълна биография</p>
+        <h2 class="text-4xl font-headline font-extrabold text-primary">Д-р Иво Костов, MD</h2>
+        <p class="text-on-surface-variant text-lg leading-relaxed">
+          Д-р Иво Костов е лекар с над 20 години опит в анестезиологията, реанимацията и интензивната медицина. Работил е в областите на хирургия, урология, ортопедия, кардиология, пулмология, хемодиализа и онкология.
+        </p>
+        <p class="text-on-surface-variant leading-relaxed">
+          Към клиничния си опит Д-р Костов добавя Магистратура по изкуствен интелект от Rome Business School. Тази комбинация му позволява да развива био-дигитални близнаци и AI-базирани протоколи за персонализирано дълголетие — подход, който все още е рядкост в България.
+        </p>
+        <p class="text-on-surface-variant leading-relaxed">
+          Днес практиката му е фокусирана върху превенция и оптимизация. Вместо да чака пациентите да се разболеят, Д-р Костов прилага прецизна диагностика, пептидни терапии, NAD+ протоколи и непрекъснат мониторинг, за да поддържа тялото в оптимално състояние.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== QUALIFICATIONS ===== -->
+<section class="py-24 bg-surface-container-lowest">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <div class="mb-16 reveal">
+      <h2 class="text-4xl font-headline font-extrabold text-primary mb-4">Квалификации и опит</h2>
+      <p class="text-on-surface-variant max-w-xl">Уникална комбинация от клиничен опит и технологична експертиза.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="bg-white/70 backdrop-blur-xl rounded-[2rem] p-8 shadow-sm reveal">
+        <div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center text-secondary mb-6">
+          <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">local_hospital</span>
+        </div>
+        <h3 class="text-lg font-headline font-bold text-primary mb-3">Специалност</h3>
+        <p class="text-on-surface-variant text-sm">Анестезиология и реанимация</p>
+      </div>
+      <div class="bg-white/70 backdrop-blur-xl rounded-[2rem] p-8 shadow-sm reveal reveal-delay-1">
+        <div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center text-secondary mb-6">
+          <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">school</span>
+        </div>
+        <h3 class="text-lg font-headline font-bold text-primary mb-3">Образование</h3>
+        <p class="text-on-surface-variant text-sm">Магистър по изкуствен интелект, Rome Business School</p>
+      </div>
+      <div class="bg-white/70 backdrop-blur-xl rounded-[2rem] p-8 shadow-sm reveal reveal-delay-2">
+        <div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center text-secondary mb-6">
+          <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">medical_services</span>
+        </div>
+        <h3 class="text-lg font-headline font-bold text-primary mb-3">Клиничен опит</h3>
+        <p class="text-on-surface-variant text-sm">Хирургия, урология, ортопедия, АГО, кардиология, пулмология, хемодиализа, онкология</p>
+      </div>
+      <div class="bg-white/70 backdrop-blur-xl rounded-[2rem] p-8 shadow-sm reveal">
+        <div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center text-secondary mb-6">
+          <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">genetics</span>
+        </div>
+        <h3 class="text-lg font-headline font-bold text-primary mb-3">Области на фокус</h3>
+        <p class="text-on-surface-variant text-sm">Дълголетие, пептидни терапии, телемедицина, лайфстайл медицина, лечение на зависимости</p>
+      </div>
+      <div class="bg-white/70 backdrop-blur-xl rounded-[2rem] p-8 shadow-sm reveal reveal-delay-1">
+        <div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center text-secondary mb-6">
+          <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+        </div>
+        <h3 class="text-lg font-headline font-bold text-primary mb-3">Технологии</h3>
+        <p class="text-on-surface-variant text-sm">Био-дигитални близнаци, AI диагностика, TaVIE платформа, мобилни здравни киоски</p>
+      </div>
+      <div class="bg-white/70 backdrop-blur-xl rounded-[2rem] p-8 shadow-sm reveal reveal-delay-2">
+        <div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center text-secondary mb-6">
+          <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">schedule</span>
+        </div>
+        <h3 class="text-lg font-headline font-bold text-primary mb-3">Опит</h3>
+        <p class="text-on-surface-variant text-sm">Над 20 години в клиничната медицина и 10+ медицински специализации</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PHILOSOPHY ===== -->
+<section class="py-24 bg-surface">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <div class="flex flex-col lg:flex-row gap-16 items-center">
+      <div class="lg:w-1/2 reveal">
+        <div class="bg-gradient-to-br from-primary to-primary-container rounded-[2.5rem] p-12 text-on-primary">
+          <span class="material-symbols-outlined text-secondary-fixed text-5xl mb-6" style="font-variation-settings: 'FILL' 1;">favorite</span>
+          <h2 class="text-3xl md:text-4xl font-headline font-extrabold mb-6">Моят подход</h2>
+          <p class="text-primary-fixed-dim text-lg leading-relaxed mb-6">
+            Вярвам, че най-доброто лекарство не е хапчето — а данните. Когато разберете какво се случва в тялото ви на клетъчно ниво, можете да действате преди проблемът да стане диагноза.
+          </p>
+          <p class="text-primary-fixed-dim leading-relaxed">
+            Медицината, която практикувам, се базира на три принципа: измери точно, интервенирай рано, проследявай непрекъснато. Прилагам модерни физикални методи за лечение и минимизирам лекарствата на химична основа, когато е възможно.
+          </p>
+        </div>
+      </div>
+      <div class="lg:w-1/2 space-y-6 reveal reveal-delay-1">
+        <div class="flex items-start gap-5">
+          <div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center text-secondary shrink-0">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">biotech</span>
+          </div>
+          <div>
+            <h4 class="font-headline font-bold text-primary mb-2">Измери точно</h4>
+            <p class="text-on-surface-variant text-sm">Прецизна диагностика отвъд стандартните панели. Епигенетика, метаболомика, протеомика.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-5">
+          <div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center text-secondary shrink-0">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">speed</span>
+          </div>
+          <div>
+            <h4 class="font-headline font-bold text-primary mb-2">Интервенирай рано</h4>
+            <p class="text-on-surface-variant text-sm">Действам при първите признаци на дисбаланс, преди проблемът да стане диагноза.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-5">
+          <div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center text-secondary shrink-0">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">monitoring</span>
+          </div>
+          <div>
+            <h4 class="font-headline font-bold text-primary mb-2">Проследявай непрекъснато</h4>
+            <p class="text-on-surface-variant text-sm">24/7 мониторинг с AI и смарт устройства. Чести корекции вместо годишни прегледи.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FINAL CTA ===== -->
+<section class="py-24 bg-primary text-on-primary relative overflow-hidden">
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-secondary blur-[120px]"></div>
+  </div>
+  <div class="max-w-3xl mx-auto px-6 text-center relative z-10 reveal">
+    <h2 class="text-4xl md:text-5xl font-headline font-extrabold leading-tight mb-6">
+      Готови сте да направите<br>първата стъпка?
+    </h2>
+    <p class="text-primary-fixed-dim text-lg mb-10 max-w-md mx-auto">Безплатна 15-минутна консултация, за да разберем дали моят подход е подходящ за вас.</p>
+    <a href="kontakt.html" class="inline-block bg-white text-primary px-10 py-4 rounded-xl font-headline font-bold text-lg hover:shadow-2xl transition-all active:scale-95">
+      Резервирайте консултация
+    </a>
+  </div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="w-full pt-16 pb-8 bg-surface-container-low">
+  <div class="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-4 gap-12 text-sm leading-relaxed">
+    <div class="md:col-span-1">
+      <span class="text-lg font-bold text-primary mb-4 block font-headline">Д-р Иво Костов</span>
+      <p class="text-on-surface-variant max-w-xs">Персонализирана медицина за дълголетие. Прецизна диагностика и непрекъснат AI мониторинг.</p>
+    </div>
+    <div>
+      <h5 class="font-bold mb-4 uppercase tracking-widest text-[10px] text-on-surface-variant">Услуги</h5>
+      <ul class="space-y-2">
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="uslugi/personalizirano-dalgoletie.html">Персонализирано дълголетие</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="uslugi/bolnitsa-vkashti.html">Болница вкъщи</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="uslugi/peptidna-terapia-nad.html">Пептиди и NAD+</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="uslugi/telemedicina.html">Телемедицина</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="uslugi.html">Всички услуги →</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5 class="font-bold mb-4 uppercase tracking-widest text-[10px] text-on-surface-variant">Компания</h5>
+      <ul class="space-y-2">
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="za-nas.html">За нас</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="kak-rabotim.html">Как работим</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="tseni.html">Цени</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="kontakt.html">Контакт</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5 class="font-bold mb-4 uppercase tracking-widest text-[10px] text-on-surface-variant">Решения</h5>
+      <ul class="space-y-2">
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="reshenia/zdrav-kiosk.html">Здравен киоск</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="reshenia/korporativno-zdrave.html">Корпоративно здраве</a></li>
+      </ul>
+      <h5 class="font-bold mt-6 mb-4 uppercase tracking-widest text-[10px] text-on-surface-variant">Правна информация</h5>
+      <ul class="space-y-2">
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Поверителност</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Общи условия</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto px-6 md:px-12 mt-16">
+    <div class="bg-outline-variant/20 h-[1px] mb-8"></div>
+    <p class="text-on-surface-variant/50 text-center text-xs">&copy; 2026 Д-р Иво Костов. Всички права запазени.</p>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('active');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+document.getElementById('mobile-toggle')?.addEventListener('click', function() {
+  document.getElementById('mobile-menu')?.classList.toggle('hidden');
+});
+</script>
+<script src="js/nav.js"></script>
+</body>
+</html>

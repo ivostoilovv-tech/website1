@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html class="light" lang="bg">
+<head>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Пептидна терапия и NAD+ — Клетъчно обновяване</title>
+<meta name="description" content="BPC-157, Epitalon, GHK-Cu, NAD+ инфузии и GLP-1 терапия в България.">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>tailwind.config={darkMode:"class",theme:{extend:{colors:{"primary":"#001e40","primary-container":"#003366","on-primary":"#ffffff","on-primary-container":"#799dd6","secondary":"#00696b","secondary-container":"#56f5f8","on-secondary":"#ffffff","on-secondary-container":"#006e70","tertiary":"#002324","tertiary-container":"#003a3b","tertiary-fixed":"#6af7fa","tertiary-fixed-dim":"#46dadd","secondary-fixed":"#5af8fb","secondary-fixed-dim":"#2ddbde","primary-fixed":"#d5e3ff","primary-fixed-dim":"#a7c8ff","surface":"#f7f9fb","surface-container-low":"#f2f4f6","surface-container":"#eceef0","surface-container-high":"#e6e8ea","surface-container-lowest":"#ffffff","on-surface":"#191c1e","on-surface-variant":"#43474f","outline":"#737780","outline-variant":"#c3c6d1","error":"#ba1a1a","error-container":"#ffdad6","surface-tint":"#3a5f94"},fontFamily:{"headline":["Manrope"],"body":["Inter"]},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","2xl":"1.5rem","3xl":"2rem","full":"9999px"}}}}</script>
+<style>
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24}
+.text-gradient{background:linear-gradient(to right,#001e40,#00696b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.reveal{opacity:0;transform:translateY(30px);transition:all .8s cubic-bezier(.22,1,.36,1)}.reveal.active{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:100ms}.reveal-delay-2{transition-delay:200ms}.reveal-delay-3{transition-delay:300ms}.reveal-delay-4{transition-delay:400ms}
+
+/* Scroll-expansion hero */
+.seh-section { position: relative; min-height: 100dvh; overflow: hidden; }
+.seh-bg { position: absolute; inset: 0; z-index: 0; transition: opacity 0.15s; }
+.seh-bg img { width: 100%; height: 100%; object-fit: cover; }
+.seh-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 10; display: flex; gap: 1rem; transition: none; }
+.seh-media { border-radius: 1rem; overflow: hidden; box-shadow: 0 0 50px rgba(0,0,0,0.3); }
+.seh-media img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Animated NAD+ panel inside hero */
+.seh-panel { border-radius: 1rem; overflow: hidden; position: relative; display: flex; flex-direction: column; justify-content: space-between; }
+@keyframes nad-bar-grow { from { width: 0%; } to { width: var(--bar-target); } }
+@keyframes nad-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+@keyframes molecule-float { 0%,100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-8px) rotate(5deg); } }
+.nad-bar { height: 6px; border-radius: 3px; animation: nad-bar-grow 2s cubic-bezier(.22,1,.36,1) forwards; }
+.nad-pulse { animation: nad-pulse 1.5s ease infinite; }
+.molecule-float { animation: molecule-float 4s ease-in-out infinite; }
+
+/* Title split animation */
+.seh-title { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 25; display: flex; flex-direction: column; align-items: center; gap: 0.25rem; pointer-events: none; }
+.seh-title-line {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  color: #ffffff;
+  transition: none;
+  white-space: nowrap;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.6), 0 4px 40px rgba(0,0,0,0.4), 0 0 80px rgba(0,30,64,0.3);
+  -webkit-text-stroke: 0.5px rgba(255,255,255,0.3);
+}
+
+/* Scroll hint */
+@keyframes scroll-bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+.seh-scroll-hint { animation: scroll-bounce 2s ease infinite; }
+
+@media (max-width: 768px) {
+  .seh-center { flex-direction: column; gap: 0.5rem; }
+}
+</style>
+</head>
+<body class="bg-surface font-body text-on-surface selection:bg-secondary-container">
+
+<main class="pt-20">
+
+<!-- Scroll-Expansion Hero -->
+<section class="seh-section" id="seh-hero">
+  <!-- Background image (fades out on scroll) -->
+  <div class="seh-bg" id="seh-bg">
+    <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=1920&h=1080&fit=crop" alt="Laboratory background">
+    <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/50 backdrop-blur-[6px]"></div>
+  </div>
+
+  <!-- Split title (text moves apart on scroll) -->
+  <div class="seh-title" id="seh-title">
+    <span class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm px-4 py-1.5 rounded-full mb-3 border border-white/20" id="seh-badge">
+      <span class="material-symbols-outlined text-secondary-fixed text-sm" style="font-variation-settings:'FILL' 1">science</span>
+      <span class="text-white font-semibold text-xs uppercase tracking-widest">Пептиди и NAD+</span>
+    </span>
+    <span class="seh-title-line text-5xl md:text-7xl lg:text-8xl" id="seh-line1">Клетъчно</span>
+    <span class="seh-title-line text-5xl md:text-7xl lg:text-8xl" id="seh-line2">Обновяване</span>
+    <span class="text-base md:text-lg mt-4 font-medium max-w-lg text-center leading-relaxed inline-block px-5 py-2 rounded-xl" id="seh-sub" style="color:#fff;text-shadow: 0 2px 16px rgba(0,0,0,0.7), 0 0 40px rgba(0,0,0,0.4);background:rgba(0,0,0,0.25);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.1)">NAD+ протоколи, пептидна терапия и GLP-1 — базирани на вашата диагностика</span>
+  </div>
+
+  <!-- Expanding media container (2 panels side by side) -->
+  <div class="seh-center" id="seh-center">
+    <!-- Left: Image panel -->
+    <div class="seh-media" id="seh-img" style="width:140px;height:200px;opacity:0;transform:scale(0.9);">
+      <img src="https://images.unsplash.com/photo-1628595351029-c2bf17511435?w=800&h=600&fit=crop" alt="Peptide molecules">
+    </div>
+    <!-- Right: Dynamic cycling dashboard panel -->
+    <div class="seh-media seh-panel bg-gradient-to-br from-primary to-primary-container text-white" id="seh-panel" style="width:140px;height:200px;opacity:0;transform:scale(0.9);">
+      <div class="p-4 md:p-6 flex flex-col justify-between h-full relative overflow-hidden" id="seh-panel-inner">
+        <!-- Dynamic view container — cycles between views -->
+        <div id="dyn-views" class="absolute inset-0 p-4 md:p-6"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll hint (visible at start) -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-2 transition-opacity duration-500" id="seh-hint">
+    <span class="text-white/60 text-xs font-medium uppercase tracking-widest">Scroll to explore</span>
+    <span class="material-symbols-outlined text-white/60 text-lg seh-scroll-hint">expand_more</span>
+  </div>
+
+  <!-- After expansion: clean CTA bar -->
+  <div class="absolute bottom-0 left-0 w-full z-30 opacity-0" id="seh-content-after">
+    <div class="bg-gradient-to-t from-surface via-surface/95 to-transparent pt-16 pb-8">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-4">
+          <div class="w-10 h-10 bg-secondary/10 rounded-xl flex items-center justify-center">
+            <span class="material-symbols-outlined text-secondary" style="font-variation-settings:'FILL' 1">science</span>
+          </div>
+          <div>
+            <p class="font-headline font-bold text-primary text-base">Пептидна терапия и NAD+</p>
+            <p class="text-on-surface-variant text-sm">Базирана на вашата диагностика, не на тенденции.</p>
+          </div>
+        </div>
+        <a href="../kontakt.html" class="inline-block bg-primary text-on-primary px-6 py-3 rounded-xl font-headline font-bold text-sm hover:shadow-lg transition-all active:scale-95 shrink-0 shadow-lg shadow-primary/20">Резервирайте консултация</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NAD+ Section -->
+<section class="py-24 bg-surface">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <div class="flex flex-col lg:flex-row gap-16 items-start">
+      <div class="lg:w-1/2 reveal">
+        <h2 class="text-4xl font-headline font-extrabold text-primary mb-6">NAD+ — горивото на вашите клетки</h2>
+        <p class="text-on-surface-variant text-lg leading-relaxed mb-6">NAD+ (никотинамид аденин динуклеотид) е коензим, от който зависи производството на енергия, поправката на ДНК и клетъчната устойчивост. С възрастта нивата спадат наполовина на всеки 20 години. Резултатът: умора, когнитивна мъгла, бавно възстановяване.</p>
+        <p class="text-on-surface-variant leading-relaxed">Клиничната подкрепа на NAD+, която предлагам, включва венозни инфузии и перорални прекурсори (NMN или NR), които подобряват клетъчното енергийно производство, когнитивната яснота и устойчивостта на стрес.</p>
+      </div>
+      <div class="lg:w-1/2 space-y-6 reveal reveal-delay-1">
+        <div class="bg-surface-container-lowest p-8 rounded-[2rem] shadow-sm border border-outline-variant/10">
+          <h3 class="font-headline font-bold text-primary mb-3">NMN срещу NR</h3>
+          <p class="text-on-surface-variant text-sm leading-relaxed">И двете са деривати на витамин B3. NMN се смята за по-директен прекурсор с по-бърз ефект върху енергията и мускулната издръжливост. NR има повече клинични проучвания и се предпочита за сърдечно-съдова подкрепа. Подбирам съединението въз основа на вашите лабораторни резултати.</p>
+        </div>
+        <div class="bg-surface-container-lowest p-8 rounded-[2rem] shadow-sm border border-outline-variant/10">
+          <h3 class="font-headline font-bold text-primary mb-3">Протокол</h3>
+          <p class="text-on-surface-variant text-sm leading-relaxed">Стандартна начална доза: 250-500 мг дневно. Оптимална доза за дълголетие: 1000 мг сутрин. Комбинира се с транс-ресвератрол (500-1000 мг) и TMG за метилова подкрепа. Прием винаги сутрин — NAD+ влияе на циркадните ритми.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Peptides Section -->
+<section class="py-24 bg-surface-container-lowest">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <div class="mb-16 reveal">
+      <h2 class="text-4xl font-headline font-extrabold text-primary mb-4">Пептиди — сигналните молекули на тялото</h2>
+      <p class="text-on-surface-variant max-w-2xl">Пептидите са къси вериги от аминокиселини, които казват на тялото какво да прави: да заздрави тъкан, да произведе колаген, да регулира хормони. Използвам конкретни пептиди за конкретни цели.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-white/70 backdrop-blur-xl rounded-[2rem] p-8 shadow-sm reveal">
+        <div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center text-secondary mb-6"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">healing</span></div>
+        <h3 class="text-xl font-headline font-bold text-primary mb-3">BPC-157</h3>
+        <p class="text-on-surface-variant text-sm">За бързо заздравяване на тъкани, сухожилия и храносмилателен тракт. Един от най-добре проучените пептиди за възстановяване.</p>
+      </div>
+      <div class="bg-white/70 backdrop-blur-xl rounded-[2rem] p-8 shadow-sm reveal reveal-delay-1">
+        <div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center text-secondary mb-6"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">dna</span></div>
+        <h3 class="text-xl font-headline font-bold text-primary mb-3">Epitalon</h3>
+        <p class="text-on-surface-variant text-sm">Регулира епифизата и показва потенциал за удължаване на теломерите. Използва се в анти-ейджинг протоколи.</p>
+      </div>
+      <div class="bg-white/70 backdrop-blur-xl rounded-[2rem] p-8 shadow-sm reveal reveal-delay-2">
+        <div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center text-secondary mb-6"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">dermatology</span></div>
+        <h3 class="text-xl font-headline font-bold text-primary mb-3">GHK-Cu</h3>
+        <p class="text-on-surface-variant text-sm">За регенерация на кожата, производство на колаген и намаляване на възпалението.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GLP-1 -->
+<section class="py-24 bg-surface">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <div class="max-w-3xl reveal">
+      <h2 class="text-4xl font-headline font-extrabold text-primary mb-6">GLP-1 терапия — метаболитно възстановяване, не диета</h2>
+      <p class="text-on-surface-variant text-lg leading-relaxed mb-6">Лекарства като тирзепатид и ретатрутид са мощни инструменти за метаболитно възстановяване, инсулинова чувствителност и загуба на мазнини. Грешката е да се третират като бързо средство за отслабване.</p>
+      <p class="text-on-surface-variant leading-relaxed">В моя модел GLP-1 се комбинира с хранене с високо съдържание на протеини за запазване на мускулна маса, силови тренировки за защита на метаболизма и хормонално картографиране за предотвратяване на дисбаланси. Защото загуба на тегло без запазване на мускулите ускорява стареенето.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Process -->
+<section class="py-24 bg-surface-container-lowest">
+  <div class="max-w-4xl mx-auto px-6 md:px-12">
+    <div class="mb-16 reveal"><h2 class="text-4xl font-headline font-extrabold text-primary">Процесът</h2></div>
+    <div class="space-y-4">
+      <div class="flex items-start gap-4 reveal"><div class="w-8 h-8 bg-secondary text-white rounded-full flex items-center justify-center font-bold text-sm shrink-0">1</div><p class="text-on-surface-variant">Пълен биохимичен профил и епигенетичен тест</p></div>
+      <div class="flex items-start gap-4 reveal reveal-delay-1"><div class="w-8 h-8 bg-secondary text-white rounded-full flex items-center justify-center font-bold text-sm shrink-0">2</div><p class="text-on-surface-variant">Определяне на дефицити и цели</p></div>
+      <div class="flex items-start gap-4 reveal reveal-delay-2"><div class="w-8 h-8 bg-secondary text-white rounded-full flex items-center justify-center font-bold text-sm shrink-0">3</div><p class="text-on-surface-variant">Персонализиран протокол: конкретни пептиди + NAD+ подкрепа</p></div>
+      <div class="flex items-start gap-4 reveal reveal-delay-3"><div class="w-8 h-8 bg-secondary text-white rounded-full flex items-center justify-center font-bold text-sm shrink-0">4</div><p class="text-on-surface-variant">Редовно проследяване и корекция на дозите</p></div>
+      <div class="flex items-start gap-4 reveal reveal-delay-4"><div class="w-8 h-8 bg-secondary text-white rounded-full flex items-center justify-center font-bold text-sm shrink-0">5</div><p class="text-on-surface-variant">Инфузии и инжекции вкъщи — грижата идва при вас</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="py-24 bg-primary text-on-primary relative overflow-hidden">
+  <div class="absolute inset-0 opacity-10"><div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-secondary blur-[120px]"></div></div>
+  <div class="max-w-3xl mx-auto px-6 text-center relative z-10 reveal">
+    <h2 class="text-4xl md:text-5xl font-headline font-extrabold leading-tight mb-6">Първата стъпка е пълна диагностика.</h2>
+    <p class="text-primary-fixed-dim text-lg mb-10 max-w-md mx-auto">Свържете се с мен и ще изградим план, базиран на вашите данни.</p>
+    <a href="../kontakt.html" class="inline-block bg-white text-primary px-10 py-4 rounded-xl font-headline font-bold text-lg hover:shadow-2xl transition-all active:scale-95">Резервирайте консултация</a>
+  </div>
+</section>
+</main>
+
+<footer class="w-full pt-16 pb-8 bg-surface-container-low">
+  <div class="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-4 gap-12 text-sm leading-relaxed">
+    <div class="md:col-span-1"><span class="text-lg font-bold text-primary mb-4 block font-headline">Д-р Иво Костов</span><p class="text-on-surface-variant max-w-xs">Персонализирана медицина за дълголетие. Прецизна диагностика и непрекъснат AI мониторинг.</p></div>
+    <div><h5 class="font-bold mb-4 uppercase tracking-widest text-[10px] text-on-surface-variant">Услуги</h5><ul class="space-y-2"><li><a class="text-on-surface-variant hover:text-primary transition-colors" href="../uslugi/personalizirano-dalgoletie.html">Персонализирано дълголетие</a></li><li><a class="text-on-surface-variant hover:text-primary transition-colors" href="../uslugi/bolnitsa-vkashti.html">Болница вкъщи</a></li><li><a class="text-on-surface-variant hover:text-primary transition-colors" href="../uslugi/peptidna-terapia-nad.html">Пептиди и NAD+</a></li><li><a class="text-on-surface-variant hover:text-primary transition-colors" href="../uslugi/telemedicina.html">Телемедицина</a></li><li><a class="text-on-surface-variant hover:text-primary transition-colors" href="../uslugi.html">Всички услуги →</a></li></ul></div>
+    <div><h5 class="font-bold mb-4 uppercase tracking-widest text-[10px] text-on-surface-variant">Компания</h5><ul class="space-y-2"><li><a class="text-on-surface-variant hover:text-primary transition-colors" href="../za-nas.html">За нас</a></li><li><a class="text-on-surface-variant hover:text-primary transition-colors" href="../kak-rabotim.html">Как работим</a></li><li><a class="text-on-surface-variant hover:text-primary transition-colors" href="../tseni.html">Цени</a></li><li><a class="text-on-surface-variant hover:text-primary transition-colors" href="../kontakt.html">Контакт</a></li></ul></div>
+    <div><h5 class="font-bold mb-4 uppercase tracking-widest text-[10px] text-on-surface-variant">Решения</h5><ul class="space-y-2"><li><a class="text-on-surface-variant hover:text-primary transition-colors" href="../reshenia/zdrav-kiosk.html">Здравен киоск</a></li><li><a class="text-on-surface-variant hover:text-primary transition-colors" href="../reshenia/korporativno-zdrave.html">Корпоративно здраве</a></li></ul><h5 class="font-bold mt-6 mb-4 uppercase tracking-widest text-[10px] text-on-surface-variant">Правна информация</h5><ul class="space-y-2"><li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Поверителност</a></li><li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Общи условия</a></li></ul></div>
+  </div>
+  <div class="max-w-7xl mx-auto px-6 md:px-12 mt-16"><div class="bg-outline-variant/20 h-[1px] mb-8"></div><p class="text-on-surface-variant/50 text-center text-xs">&copy; 2026 Д-р Иво Костов. Всички права запазени.</p></div>
+</footer>
+
+<script>
+// Reveal observer
+const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('active');observer.unobserve(entry.target)}})},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+// ==========================================
+// Dynamic Panel — cycles through 5 views
+// ==========================================
+(function(){
+  const views = [
+    { title:'NAD+ НИВА', icon:'science', color:'#6af7fa', items:[
+      {label:'NAD+ ниво',val:'92%',pct:92,clr:'#6af7fa'},{label:'Клетъчна енергия',val:'+34%',pct:78,clr:'#60a5fa'},
+      {label:'ДНК поправка',val:'Активна',pct:85,clr:'#a78bfa'},{label:'Сиртуини',val:'Оптимални',pct:90,clr:'#34d399'}],
+      stat:'NAD+', statVal:'680 nmol/L', statSub:'↑ 240% от старт'},
+    { title:'BPC-157', icon:'healing', color:'#60a5fa', items:[
+      {label:'Тъканна регенерация',val:'+62%',pct:88,clr:'#60a5fa'},{label:'Възпаление',val:'-45%',pct:55,clr:'#f59e0b'},
+      {label:'Колаген тип III',val:'+28%',pct:72,clr:'#a78bfa'},{label:'Кръвоснабдяване',val:'Подобрено',pct:80,clr:'#34d399'}],
+      stat:'BPC', statVal:'250 μg 2x/ден', statSub:'Ден 18 от протокол'},
+    { title:'EPITALON', icon:'dna', color:'#a78bfa', items:[
+      {label:'Теломерна дължина',val:'+12%',pct:76,clr:'#a78bfa'},{label:'Мелатонин',val:'Нормализиран',pct:92,clr:'#60a5fa'},
+      {label:'Клетъчно деление',val:'Оптимално',pct:85,clr:'#34d399'},{label:'Епифиза',val:'Активна',pct:88,clr:'#6af7fa'}],
+      stat:'Цикъл', statVal:'10 мг / 10 дни', statSub:'Теломераза ↑ 33%'},
+    { title:'GLP-1 МЕТАБОЛИЗЪМ', icon:'monitor_weight', color:'#f59e0b', items:[
+      {label:'Инсулинова чувств.',val:'+48%',pct:82,clr:'#f59e0b'},{label:'Висцерална мазнина',val:'-22%',pct:38,clr:'#ef4444'},
+      {label:'Мускулна маса',val:'Запазена',pct:95,clr:'#34d399'},{label:'HbA1c',val:'5.1%',pct:88,clr:'#60a5fa'}],
+      stat:'GLP-1', statVal:'Тирзепатид 5мг', statSub:'Седмица 12'},
+    { title:'GHK-Cu КОЖА', icon:'dermatology', color:'#f472b6', items:[
+      {label:'Колаген I & III',val:'+70%',pct:90,clr:'#f472b6'},{label:'Еластин',val:'+45%',pct:78,clr:'#a78bfa'},
+      {label:'Възпаление',val:'-38%',pct:42,clr:'#f59e0b'},{label:'Хидратация',val:'Оптимална',pct:92,clr:'#60a5fa'}],
+      stat:'GHK-Cu', statVal:'200 μg/мл серум', statSub:'Видим резултат: 3 седм.'},
+  ];
+  let currentView = 0;
+  const container = document.getElementById('dyn-views');
+  if(!container) return;
+
+  function renderView(v, animate){
+    const delay = animate ? 'style="animation:nad-bar-grow 1.5s cubic-bezier(.22,1,.36,1) forwards"' : '';
+    container.innerHTML = `
+      <div class="flex flex-col justify-between h-full ${animate?'':''}">
+        <div>
+          <div class="flex items-center gap-2 mb-1">
+            <span class="material-symbols-outlined text-lg" style="font-variation-settings:'FILL' 1;color:${v.color}">${v.icon}</span>
+            <span class="text-[9px] md:text-[11px] font-bold uppercase tracking-widest" style="color:${v.color}">${v.title}</span>
+          </div>
+          <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full nad-pulse" style="background:#4ade80"></span><span class="text-[9px] font-bold" style="color:#4ade80">LIVE</span></div>
+        </div>
+        <div class="space-y-2 my-2">
+          ${v.items.map((it,i) => `
+            <div class="flex items-center gap-2">
+              <span class="text-[8px] text-white/50 w-12 shrink-0 truncate">${it.label}</span>
+              <div class="flex-1 bg-white/10 rounded-full h-1"><div class="h-full rounded-full" style="background:${it.clr};width:${animate?0:it.pct}%;${animate?`animation:nad-bar-grow 1.5s cubic-bezier(.22,1,.36,1) ${i*0.15}s forwards;--bar-target:${it.pct}%`:''}"></div></div>
+              <span class="text-[8px] font-bold" style="color:${it.clr}">${it.val}</span>
+            </div>`).join('')}
+        </div>
+        <div>
+          <div class="bg-white/8 backdrop-blur rounded-xl p-2 mb-2 border border-white/5">
+            <p class="text-[8px] text-white/40">${v.stat}</p>
+            <p class="text-sm md:text-base font-bold font-headline" style="color:${v.color}">${v.statVal}</p>
+            <p class="text-[9px] text-white/50">${v.statSub}</p>
+          </div>
+          <div class="flex gap-1 justify-center">
+            ${views.map((_,i) => `<div class="w-${i===currentView?'4':'1.5'} h-1 rounded-full transition-all duration-300" style="background:${i===currentView?v.color:'rgba(255,255,255,0.15)'}"></div>`).join('')}
+          </div>
+        </div>
+      </div>`;
+  }
+
+  renderView(views[0], true);
+  setInterval(() => {
+    currentView = (currentView + 1) % views.length;
+    container.style.opacity = '0';
+    container.style.transform = 'translateY(8px)';
+    container.style.transition = 'all 0.3s ease';
+    setTimeout(() => {
+      renderView(views[currentView], true);
+      container.style.opacity = '1';
+      container.style.transform = 'translateY(0)';
+    }, 300);
+  }, 4000);
+})();
+
+// ==========================================
+// Scroll-Expansion with Spring Physics
+// ==========================================
+(function(){
+  let targetProgress = 0;  // where scroll wants to go
+  let currentProgress = 0; // smoothed value (rendered)
+  let expanded = false;
+  let touchStartY = 0;
+  let rafId = null;
+  const isMobile = () => window.innerWidth < 768;
+
+  const bg = document.getElementById('seh-bg');
+  const center = document.getElementById('seh-center');
+  const imgEl = document.getElementById('seh-img');
+  const panelEl = document.getElementById('seh-panel');
+  const line1 = document.getElementById('seh-line1');
+  const line2 = document.getElementById('seh-line2');
+  const hint = document.getElementById('seh-hint');
+  const afterContent = document.getElementById('seh-content-after');
+  if (!center) return;
+
+  // Spring lerp — smooth like Framer
+  const SPRING = 0.08; // lower = smoother (0.05-0.12 range)
+
+  function lerp(a, b, t) { return a + (b - a) * t; }
+
+  function render() {
+    // Spring interpolation
+    currentProgress = lerp(currentProgress, targetProgress, SPRING);
+    // Snap if very close
+    if (Math.abs(currentProgress - targetProgress) < 0.001) currentProgress = targetProgress;
+
+    const p = currentProgress;
+    const mob = isMobile();
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+
+    // Media sizes
+    const startW = mob ? 130 : 160;
+    const endW = mob ? (vw * 0.46) : Math.min(vw * 0.38, 600);
+    const startH = mob ? 180 : 220;
+    const endH = mob ? (vh * 0.65) : Math.min(vh * 0.72, 520);
+    const w = startW + p * (endW - startW);
+    const h = startH + p * (endH - startH);
+
+    imgEl.style.width = w + 'px';
+    imgEl.style.height = h + 'px';
+    panelEl.style.width = w + 'px';
+    panelEl.style.height = h + 'px';
+
+    // Cards fade in + scale up from invisible
+    const cardOpacity = Math.min(p * 5, 1); // fully visible by 20% scroll
+    const cardScale = 0.9 + Math.min(p * 0.5, 0.1); // 0.9 → 1.0
+    imgEl.style.opacity = cardOpacity;
+    panelEl.style.opacity = cardOpacity;
+    imgEl.style.transform = 'scale(' + cardScale + ')';
+    panelEl.style.transform = 'scale(' + cardScale + ')';
+
+    const radius = Math.max(20 - p * 10, 10);
+    imgEl.style.borderRadius = radius + 'px';
+    panelEl.style.borderRadius = radius + 'px';
+
+    center.style.gap = (8 + p * 20) + 'px';
+    bg.style.opacity = 1 - p;
+
+    // Title: smooth split + fade
+    const tx = p * (mob ? 50 : 100);
+    line1.style.transform = 'translateX(-' + tx + 'vw)';
+    line2.style.transform = 'translateX(' + tx + 'vw)';
+    const titleOp = Math.max(1 - p * 2.2, 0);
+    line1.style.opacity = titleOp;
+    line2.style.opacity = titleOp;
+    const badge = document.getElementById('seh-badge');
+    const sub = document.getElementById('seh-sub');
+    if (badge) badge.style.opacity = titleOp;
+    if (sub) { sub.style.opacity = titleOp; sub.style.transform = 'translateY(' + (p * 20) + 'px)'; }
+
+    hint.style.opacity = Math.max(1 - p * 4, 0);
+
+    afterContent.style.opacity = p > 0.6 ? Math.min((p - 0.6) / 0.25, 1) : 0;
+
+    const inner = document.getElementById('seh-panel-inner');
+    if (inner) inner.style.opacity = Math.min(p * 2.5, 1);
+
+    // Keep looping while animating
+    if (Math.abs(currentProgress - targetProgress) > 0.0005) {
+      rafId = requestAnimationFrame(render);
+    } else {
+      rafId = null;
+    }
+  }
+
+  function startRender() {
+    if (!rafId) rafId = requestAnimationFrame(render);
+  }
+
+  function handleWheel(e) {
+    if (expanded && e.deltaY < 0 && window.scrollY <= 5) {
+      expanded = false;
+      e.preventDefault();
+    } else if (!expanded) {
+      e.preventDefault();
+      targetProgress = Math.min(Math.max(targetProgress + e.deltaY * 0.0008, 0), 1);
+      if (targetProgress >= 1) { expanded = true; }
+      startRender();
+    }
+  }
+
+  function handleTouchStart(e) { touchStartY = e.touches[0].clientY; }
+  function handleTouchMove(e) {
+    if (!touchStartY) return;
+    const touchY = e.touches[0].clientY;
+    const deltaY = touchStartY - touchY;
+    if (expanded && deltaY < -20 && window.scrollY <= 5) {
+      expanded = false; e.preventDefault();
+    } else if (!expanded) {
+      e.preventDefault();
+      const factor = deltaY < 0 ? 0.007 : 0.004;
+      targetProgress = Math.min(Math.max(targetProgress + deltaY * factor, 0), 1);
+      if (targetProgress >= 1) expanded = true;
+      touchStartY = touchY;
+      startRender();
+    }
+  }
+  function handleTouchEnd() { touchStartY = 0; }
+  function handleScroll() { if (!expanded) window.scrollTo(0, 0); }
+
+  window.addEventListener('wheel', handleWheel, { passive: false });
+  window.addEventListener('scroll', handleScroll);
+  window.addEventListener('touchstart', handleTouchStart, { passive: false });
+  window.addEventListener('touchmove', handleTouchMove, { passive: false });
+  window.addEventListener('touchend', handleTouchEnd);
+
+  render();
+})();
+</script>
+<script src="../js/nav.js"></script>
+</body>
+</html>

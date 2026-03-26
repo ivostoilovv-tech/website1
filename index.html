@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html class="light" lang="bg">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Д-р Иво Костов — Персонализирана медицина за дълголетие</title>
+<meta name="description" content="Персонализирана медицина за дълголетие в България. Прецизна диагностика, пептидна терапия, NAD+, телемедицина и болница вкъщи.">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "primary": "#001e40",
+        "primary-container": "#003366",
+        "on-primary": "#ffffff",
+        "on-primary-container": "#799dd6",
+        "secondary": "#00696b",
+        "secondary-container": "#56f5f8",
+        "on-secondary": "#ffffff",
+        "on-secondary-container": "#006e70",
+        "tertiary": "#002324",
+        "tertiary-container": "#003a3b",
+        "tertiary-fixed": "#6af7fa",
+        "tertiary-fixed-dim": "#46dadd",
+        "secondary-fixed": "#5af8fb",
+        "secondary-fixed-dim": "#2ddbde",
+        "primary-fixed": "#d5e3ff",
+        "primary-fixed-dim": "#a7c8ff",
+        "surface": "#f7f9fb",
+        "surface-container-low": "#f2f4f6",
+        "surface-container": "#eceef0",
+        "surface-container-high": "#e6e8ea",
+        "surface-container-lowest": "#ffffff",
+        "on-surface": "#191c1e",
+        "on-surface-variant": "#43474f",
+        "outline": "#737780",
+        "outline-variant": "#c3c6d1",
+        "error": "#ba1a1a",
+        "error-container": "#ffdad6",
+        "surface-tint": "#3a5f94",
+      },
+      fontFamily: {
+        "headline": ["Manrope"],
+        "body": ["Inter"],
+      },
+      borderRadius: {
+        "DEFAULT": "0.25rem",
+        "lg": "0.5rem",
+        "xl": "0.75rem",
+        "2xl": "1.5rem",
+        "3xl": "2rem",
+        "full": "9999px",
+      },
+    },
+  },
+}
+</script>
+<style>
+.material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+.text-gradient { background: linear-gradient(to right, #001e40, #00696b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
+.reveal.active { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 100ms; }
+.reveal-delay-2 { transition-delay: 200ms; }
+.reveal-delay-3 { transition-delay: 300ms; }
+.reveal-delay-4 { transition-delay: 400ms; }
+
+/* Hero panel carousel */
+.hero-panel { pointer-events: none; }
+.hero-panel.active-panel { opacity: 1 !important; pointer-events: auto; transform: scale(1); }
+.hero-panel:not(.active-panel) { opacity: 0; transform: scale(0.96); }
+.panel-dot.active-dot { width: 2rem; background-color: #001e40; }
+.panel-dot:not(.active-dot) { width: 0.375rem; }
+
+/* ECG animation */
+@keyframes ecg-draw { to { stroke-dashoffset: 0; } }
+.panel-ecg { stroke-dasharray: 800; stroke-dashoffset: 800; }
+.active-panel .panel-ecg { animation: ecg-draw 2s ease forwards; }
+
+/* Wave animation */
+@keyframes wave-move { 0% { transform: translateX(0); } 100% { transform: translateX(-50px); } }
+.active-panel .panel-wave { animation: wave-move 3s linear infinite; }
+</style>
+</head>
+<body class="bg-surface font-body text-on-surface selection:bg-secondary-container">
+
+<!-- Nav -->
+<main class="pt-20">
+
+<!-- ===== HERO ===== -->
+<section class="relative min-h-[870px] flex items-center overflow-hidden bg-surface-container-low">
+  <div class="absolute inset-0 z-0">
+    <div class="absolute inset-0 bg-gradient-to-r from-surface-container-low via-transparent to-transparent z-10"></div>
+    <img class="w-full h-full object-cover opacity-25" src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=1600&h=900&fit=crop" alt="DNA visualization">
+  </div>
+  <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <div class="space-y-8 reveal">
+      <div class="inline-flex items-center space-x-2 bg-secondary-container/20 px-4 py-1.5 rounded-full border border-secondary/10">
+        <span class="material-symbols-outlined text-secondary text-sm" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+        <span class="text-secondary font-semibold text-xs uppercase tracking-widest">Персонализирана медицина</span>
+      </div>
+      <h1 class="text-5xl md:text-7xl font-headline font-extrabold text-primary leading-[1.08] tracking-tight">
+        Живейте по-дълго.<br><span class="text-gradient">Живейте по-добре.</span>
+      </h1>
+      <p class="text-xl text-on-surface-variant max-w-xl leading-relaxed">
+        Прецизна диагностика, клетъчни терапии и непрекъснат AI мониторинг. Вашият персонален план за дълголетие — от дома.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="kontakt.html" class="bg-primary text-on-primary px-8 py-4 rounded-xl font-headline font-bold text-lg hover:shadow-lg transition-all active:scale-95 text-center">
+          Резервирайте консултация
+        </a>
+        <a href="uslugi.html" class="flex items-center justify-center space-x-2 text-primary font-headline font-bold px-8 py-4 hover:bg-white/50 rounded-xl transition-all">
+          <span class="material-symbols-outlined">play_circle</span>
+          <span>Вижте услугите</span>
+        </a>
+      </div>
+    </div>
+    <!-- Hero Dashboard — 7 Service Panels cycling -->
+    <div class="hidden lg:block relative reveal reveal-delay-2">
+      <div id="hero-panels" class="relative h-[460px] w-full">
+
+        <!-- Panel 1: Персонализирано дълголетие -->
+        <div class="hero-panel active-panel absolute inset-0 bg-gradient-to-br from-primary to-primary-container rounded-[2.5rem] shadow-2xl p-8 text-white overflow-hidden transition-all duration-700">
+          <div class="absolute inset-0 opacity-15"><img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=600&h=500&fit=crop" alt=""></div>
+          <div class="relative z-10 h-full flex flex-col justify-between">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-white/15 backdrop-blur rounded-xl flex items-center justify-center">
+                  <span class="material-symbols-outlined text-tertiary-fixed" style="font-variation-settings:'FILL' 1">genetics</span>
+                </div>
+                <span class="font-headline font-bold text-sm uppercase tracking-wider text-tertiary-fixed">Дълголетие</span>
+              </div>
+              <div class="flex items-center gap-2"><span class="w-2 h-2 bg-tertiary-fixed rounded-full animate-pulse"></span><span class="text-tertiary-fixed text-xs font-bold">LIVE</span></div>
+            </div>
+            <div>
+              <div class="flex items-end gap-6 mb-6">
+                <div>
+                  <p class="text-white/50 text-xs mb-1">Биологична възраст</p>
+                  <p class="text-5xl font-headline font-extrabold panel-number" data-from="42" data-to="34">42</p>
+                </div>
+                <div class="flex items-center gap-1 mb-2 bg-secondary/30 px-3 py-1 rounded-full">
+                  <span class="material-symbols-outlined text-tertiary-fixed text-sm">trending_down</span>
+                  <span class="text-tertiary-fixed font-bold text-sm">-8.4 год.</span>
+                </div>
+              </div>
+              <div class="grid grid-cols-3 gap-3">
+                <div class="bg-white/10 backdrop-blur rounded-xl p-3"><p class="text-[10px] text-white/50">Теломери</p><p class="font-bold text-sm">95%</p></div>
+                <div class="bg-white/10 backdrop-blur rounded-xl p-3"><p class="text-[10px] text-white/50">Епигенетика</p><p class="font-bold text-sm text-tertiary-fixed">TruAge</p></div>
+                <div class="bg-white/10 backdrop-blur rounded-xl p-3"><p class="text-[10px] text-white/50">GlycanAge</p><p class="font-bold text-sm">-6 год.</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 2: Болница вкъщи -->
+        <div class="hero-panel absolute inset-0 bg-gradient-to-br from-[#003a3b] to-secondary rounded-[2.5rem] shadow-2xl p-8 text-white overflow-hidden opacity-0 transition-all duration-700">
+          <div class="absolute inset-0 opacity-15"><img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?w=600&h=500&fit=crop" alt=""></div>
+          <div class="relative z-10 h-full flex flex-col justify-between">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-white/15 backdrop-blur rounded-xl flex items-center justify-center">
+                  <span class="material-symbols-outlined text-secondary-fixed" style="font-variation-settings:'FILL' 1">home_health</span>
+                </div>
+                <span class="font-headline font-bold text-sm uppercase tracking-wider text-secondary-fixed">Болница вкъщи</span>
+              </div>
+              <div class="flex items-center gap-2"><span class="w-2 h-2 bg-secondary-fixed rounded-full animate-pulse"></span><span class="text-secondary-fixed text-xs font-bold">24/7</span></div>
+            </div>
+            <div>
+              <div class="flex items-center gap-4 mb-6">
+                <div class="w-20 h-20 rounded-2xl bg-white/10 backdrop-blur flex items-center justify-center">
+                  <span class="material-symbols-outlined text-4xl text-secondary-fixed" style="font-variation-settings:'FILL' 1">monitor_heart</span>
+                </div>
+                <div>
+                  <p class="text-white/50 text-xs">Пациенти на мониторинг</p>
+                  <p class="text-4xl font-headline font-extrabold panel-number" data-from="0" data-to="12">0</p>
+                </div>
+              </div>
+              <div class="grid grid-cols-3 gap-3">
+                <div class="bg-white/10 backdrop-blur rounded-xl p-3"><p class="text-[10px] text-white/50">Сърдечен ритъм</p><p class="font-bold text-sm text-secondary-fixed">72 bpm</p></div>
+                <div class="bg-white/10 backdrop-blur rounded-xl p-3"><p class="text-[10px] text-white/50">SpO2</p><p class="font-bold text-sm">98%</p></div>
+                <div class="bg-white/10 backdrop-blur rounded-xl p-3"><p class="text-[10px] text-white/50">Температура</p><p class="font-bold text-sm">36.6°</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 3: Пептиди и NAD+ -->
+        <div class="hero-panel absolute inset-0 bg-gradient-to-br from-[#0a1628] to-[#1a3050] rounded-[2.5rem] shadow-2xl p-8 text-white overflow-hidden opacity-0 transition-all duration-700">
+          <div class="absolute inset-0 opacity-10"><img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1628595351029-c2bf17511435?w=600&h=500&fit=crop" alt=""></div>
+          <div class="relative z-10 h-full flex flex-col justify-between">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-white/15 backdrop-blur rounded-xl flex items-center justify-center">
+                  <span class="material-symbols-outlined text-tertiary-fixed" style="font-variation-settings:'FILL' 1">science</span>
+                </div>
+                <span class="font-headline font-bold text-sm uppercase tracking-wider text-tertiary-fixed">NAD+ Терапия</span>
+              </div>
+            </div>
+            <div>
+              <p class="text-white/50 text-xs mb-2">NAD+ ниво след инфузия</p>
+              <!-- Progress bar animation -->
+              <div class="relative h-4 bg-white/10 rounded-full mb-6 overflow-hidden">
+                <div class="absolute inset-y-0 left-0 bg-gradient-to-r from-secondary to-tertiary-fixed rounded-full panel-bar" style="width:0%"></div>
+              </div>
+              <div class="grid grid-cols-4 gap-2">
+                <div class="bg-white/10 backdrop-blur rounded-xl p-3 text-center"><p class="text-[9px] text-white/40">BPC-157</p><p class="font-bold text-xs text-tertiary-fixed">Active</p></div>
+                <div class="bg-white/10 backdrop-blur rounded-xl p-3 text-center"><p class="text-[9px] text-white/40">Epitalon</p><p class="font-bold text-xs">Ready</p></div>
+                <div class="bg-white/10 backdrop-blur rounded-xl p-3 text-center"><p class="text-[9px] text-white/40">GHK-Cu</p><p class="font-bold text-xs text-tertiary-fixed">Active</p></div>
+                <div class="bg-white/10 backdrop-blur rounded-xl p-3 text-center"><p class="text-[9px] text-white/40">GLP-1</p><p class="font-bold text-xs">Ready</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 4: Хормонална оптимизация -->
+        <div class="hero-panel absolute inset-0 bg-gradient-to-br from-[#1a1040] to-[#2d1860] rounded-[2.5rem] shadow-2xl p-8 text-white overflow-hidden opacity-0 transition-all duration-700">
+          <div class="relative z-10 h-full flex flex-col justify-between">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-white/15 backdrop-blur rounded-xl flex items-center justify-center">
+                <span class="material-symbols-outlined text-purple-300" style="font-variation-settings:'FILL' 1">balance</span>
+              </div>
+              <span class="font-headline font-bold text-sm uppercase tracking-wider text-purple-300">Хормони</span>
+            </div>
+            <div>
+              <p class="text-white/50 text-xs mb-4">Хормонален баланс</p>
+              <!-- Horizontal bars -->
+              <div class="space-y-3 mb-4">
+                <div class="flex items-center gap-3"><span class="text-[10px] text-white/50 w-20">Тестостерон</span><div class="flex-1 h-3 bg-white/10 rounded-full overflow-hidden"><div class="h-full bg-purple-400 rounded-full panel-hbar" style="width:0%" data-target="85%"></div></div><span class="text-xs font-bold">85%</span></div>
+                <div class="flex items-center gap-3"><span class="text-[10px] text-white/50 w-20">DHEA</span><div class="flex-1 h-3 bg-white/10 rounded-full overflow-hidden"><div class="h-full bg-purple-300 rounded-full panel-hbar" style="width:0%" data-target="72%"></div></div><span class="text-xs font-bold">72%</span></div>
+                <div class="flex items-center gap-3"><span class="text-[10px] text-white/50 w-20">Щитовидна</span><div class="flex-1 h-3 bg-white/10 rounded-full overflow-hidden"><div class="h-full bg-purple-200 rounded-full panel-hbar" style="width:0%" data-target="91%"></div></div><span class="text-xs font-bold">91%</span></div>
+                <div class="flex items-center gap-3"><span class="text-[10px] text-white/50 w-20">Кортизол</span><div class="flex-1 h-3 bg-white/10 rounded-full overflow-hidden"><div class="h-full bg-green-400 rounded-full panel-hbar" style="width:0%" data-target="45%"></div></div><span class="text-xs font-bold text-green-400">Нисък ✓</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 5: Телемедицина -->
+        <div class="hero-panel absolute inset-0 bg-gradient-to-br from-[#002030] to-[#004050] rounded-[2.5rem] shadow-2xl p-8 text-white overflow-hidden opacity-0 transition-all duration-700">
+          <div class="absolute inset-0 opacity-10"><img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=500&fit=crop" alt=""></div>
+          <div class="relative z-10 h-full flex flex-col justify-between">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-white/15 backdrop-blur rounded-xl flex items-center justify-center">
+                  <span class="material-symbols-outlined text-cyan-300" style="font-variation-settings:'FILL' 1">monitor_heart</span>
+                </div>
+                <span class="font-headline font-bold text-sm uppercase tracking-wider text-cyan-300">TaVIE Платформа</span>
+              </div>
+              <span class="bg-cyan-500/20 text-cyan-300 text-[10px] font-bold px-3 py-1 rounded-full">CONNECTED</span>
+            </div>
+            <div>
+              <!-- Simulated ECG line -->
+              <svg class="w-full h-16 mb-4" viewBox="0 0 400 60" fill="none">
+                <path d="M0,30 L60,30 L70,30 L80,10 L90,50 L100,25 L110,35 L120,30 L200,30 L210,30 L220,10 L230,50 L240,25 L250,35 L260,30 L340,30 L350,30 L360,10 L370,50 L380,25 L390,35 L400,30" stroke="rgba(103,232,249,0.6)" stroke-width="2" class="panel-ecg"/>
+              </svg>
+              <div class="grid grid-cols-3 gap-3">
+                <div class="bg-white/10 backdrop-blur rounded-xl p-3"><p class="text-[10px] text-white/40">Устройства</p><p class="font-bold text-sm text-cyan-300">3 active</p></div>
+                <div class="bg-white/10 backdrop-blur rounded-xl p-3"><p class="text-[10px] text-white/40">Данни днес</p><p class="font-bold text-sm">2,847</p></div>
+                <div class="bg-white/10 backdrop-blur rounded-xl p-3"><p class="text-[10px] text-white/40">Сън скор</p><p class="font-bold text-sm text-cyan-300">92/100</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 6: Зависимости -->
+        <div class="hero-panel absolute inset-0 bg-gradient-to-br from-[#1a2810] to-[#2d4020] rounded-[2.5rem] shadow-2xl p-8 text-white overflow-hidden opacity-0 transition-all duration-700">
+          <div class="relative z-10 h-full flex flex-col justify-between">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-white/15 backdrop-blur rounded-xl flex items-center justify-center">
+                <span class="material-symbols-outlined text-green-300" style="font-variation-settings:'FILL' 1">psychology</span>
+              </div>
+              <span class="font-headline font-bold text-sm uppercase tracking-wider text-green-300">Зависимости</span>
+            </div>
+            <div>
+              <p class="text-white/50 text-xs mb-3">Дни без рецидив</p>
+              <p class="text-6xl font-headline font-extrabold text-green-300 mb-4 panel-number" data-from="0" data-to="147">0</p>
+              <div class="flex gap-1 mb-4">
+                <div class="h-2 flex-1 bg-green-400 rounded-full"></div><div class="h-2 flex-1 bg-green-400 rounded-full"></div><div class="h-2 flex-1 bg-green-400 rounded-full"></div><div class="h-2 flex-1 bg-green-400/40 rounded-full"></div><div class="h-2 flex-1 bg-green-400/20 rounded-full"></div>
+              </div>
+              <div class="grid grid-cols-2 gap-3">
+                <div class="bg-white/10 backdrop-blur rounded-xl p-3"><p class="text-[10px] text-white/40">Програма</p><p class="font-bold text-xs text-green-300">Фаза 3</p></div>
+                <div class="bg-white/10 backdrop-blur rounded-xl p-3"><p class="text-[10px] text-white/40">Подкрепа</p><p class="font-bold text-xs">24/7</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 7: Вагусов нерв -->
+        <div class="hero-panel absolute inset-0 bg-gradient-to-br from-[#201030] to-[#3a1860] rounded-[2.5rem] shadow-2xl p-8 text-white overflow-hidden opacity-0 transition-all duration-700">
+          <div class="relative z-10 h-full flex flex-col justify-between">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-white/15 backdrop-blur rounded-xl flex items-center justify-center">
+                <span class="material-symbols-outlined text-violet-300" style="font-variation-settings:'FILL' 1">bolt</span>
+              </div>
+              <span class="font-headline font-bold text-sm uppercase tracking-wider text-violet-300">aVNS Стимулация</span>
+            </div>
+            <div>
+              <!-- Animated wave -->
+              <svg class="w-full h-20 mb-4" viewBox="0 0 400 80" fill="none">
+                <path d="M0,40 Q50,10 100,40 Q150,70 200,40 Q250,10 300,40 Q350,70 400,40" stroke="rgba(196,181,253,0.5)" stroke-width="2" fill="none" class="panel-wave"/>
+                <path d="M0,40 Q50,20 100,40 Q150,60 200,40 Q250,20 300,40 Q350,60 400,40" stroke="rgba(196,181,253,0.25)" stroke-width="1.5" fill="none"/>
+              </svg>
+              <div class="grid grid-cols-3 gap-3">
+                <div class="bg-white/10 backdrop-blur rounded-xl p-3"><p class="text-[10px] text-white/40">Честота</p><p class="font-bold text-sm text-violet-300">25 Hz</p></div>
+                <div class="bg-white/10 backdrop-blur rounded-xl p-3"><p class="text-[10px] text-white/40">Сесии</p><p class="font-bold text-sm">12/20</p></div>
+                <div class="bg-white/10 backdrop-blur rounded-xl p-3"><p class="text-[10px] text-white/40">Ефект</p><p class="font-bold text-sm text-violet-300">+38%</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel indicators -->
+        <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-30" id="panel-dots">
+          <button class="w-8 h-1.5 rounded-full bg-primary transition-all panel-dot active-dot"></button>
+          <button class="w-1.5 h-1.5 rounded-full bg-outline-variant/40 transition-all panel-dot"></button>
+          <button class="w-1.5 h-1.5 rounded-full bg-outline-variant/40 transition-all panel-dot"></button>
+          <button class="w-1.5 h-1.5 rounded-full bg-outline-variant/40 transition-all panel-dot"></button>
+          <button class="w-1.5 h-1.5 rounded-full bg-outline-variant/40 transition-all panel-dot"></button>
+          <button class="w-1.5 h-1.5 rounded-full bg-outline-variant/40 transition-all panel-dot"></button>
+          <button class="w-1.5 h-1.5 rounded-full bg-outline-variant/40 transition-all panel-dot"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TRUST STATS — Counter Animation ===== -->
+<section class="py-16 bg-surface-container-lowest" id="stats-section">
+  <div class="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-2 md:grid-cols-4 gap-8 reveal">
+    <div class="text-center">
+      <p class="text-4xl md:text-5xl font-headline font-extrabold text-secondary counter" data-target="20" data-suffix="+">0</p>
+      <p class="text-on-surface-variant text-sm mt-2">години клиничен опит</p>
+    </div>
+    <div class="text-center">
+      <p class="text-4xl md:text-5xl font-headline font-extrabold text-secondary counter" data-target="10" data-suffix="+">0</p>
+      <p class="text-on-surface-variant text-sm mt-2">медицински специализации</p>
+    </div>
+    <div class="text-center">
+      <p class="text-4xl md:text-5xl font-headline font-extrabold text-secondary">24/7</p>
+      <p class="text-on-surface-variant text-sm mt-2">дистанционен мониторинг</p>
+    </div>
+    <div class="text-center">
+      <p class="text-4xl md:text-5xl font-headline font-extrabold text-secondary counter" data-target="100" data-suffix="%">0</p>
+      <p class="text-on-surface-variant text-sm mt-2">грижа от дома</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES BENTO GRID ===== -->
+<section class="py-24 bg-surface">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <div class="mb-16 reveal">
+      <h2 class="text-4xl font-headline font-extrabold text-primary mb-4">Какво предлагам</h2>
+      <p class="text-on-surface-variant max-w-xl">Интегриран подход — от диагностика до терапия, от клиниката до вашия дом.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Card 1: Персонализирано дълголетие — wide, dark gradient with DNA image -->
+      <a href="uslugi/personalizirano-dalgoletie.html" class="md:col-span-2 bg-gradient-to-br from-primary to-primary-container p-8 rounded-[2rem] text-on-primary relative overflow-hidden group reveal min-h-[280px] flex flex-col justify-end">
+        <img class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-35 group-hover:scale-110 transition-all duration-700" src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&h=500&fit=crop" alt="DNA lab">
+        <!-- Large icon that grows on hover -->
+        <div class="absolute top-6 right-6 opacity-10 group-hover:opacity-20 transition-all duration-700 group-hover:scale-150 group-hover:top-0 group-hover:right-0">
+          <span class="material-symbols-outlined text-[140px] text-secondary-fixed">genetics</span>
+        </div>
+        <div class="relative z-10 space-y-3">
+          <div class="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center">
+            <span class="material-symbols-outlined text-tertiary-fixed" style="font-variation-settings: 'FILL' 1;">genetics</span>
+          </div>
+          <h3 class="text-2xl font-headline font-bold">Персонализирано дълголетие</h3>
+          <p class="text-primary-fixed-dim text-sm max-w-md">Епигенетични часовници, био-дигитални близнаци и AI диагностика. Вашият личен план за по-дълъг и по-здрав живот.</p>
+          <span class="text-tertiary-fixed font-semibold text-sm flex items-center gap-1 group-hover:gap-3 transition-all">Научете повече <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
+        </div>
+      </a>
+
+      <!-- Card 2: Болница вкъщи — tall, teal gradient -->
+      <a href="uslugi/bolnitsa-vkashti.html" class="md:row-span-2 bg-gradient-to-br from-[#003a3b] to-secondary p-8 rounded-[2rem] text-on-primary flex flex-col justify-end relative overflow-hidden group reveal reveal-delay-1 min-h-[400px]">
+        <img class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-30 group-hover:scale-105 transition-all duration-700" src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?w=600&h=800&fit=crop" alt="Home care">
+        <div class="absolute top-6 right-6 opacity-10 group-hover:opacity-25 transition-all duration-700 group-hover:scale-[2] group-hover:-top-8 group-hover:-right-8">
+          <span class="material-symbols-outlined text-[100px] text-white">home_health</span>
+        </div>
+        <div class="relative z-10 space-y-4">
+          <div class="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center">
+            <span class="material-symbols-outlined text-secondary-fixed" style="font-variation-settings: 'FILL' 1;">home_health</span>
+          </div>
+          <h3 class="text-2xl font-headline font-bold">Болница вкъщи</h3>
+          <p class="text-white/70 text-sm">Интензивно лечение, мониторинг и рехабилитация от дома. С 24/7 дистанционно наблюдение.</p>
+          <span class="text-secondary-fixed font-semibold text-sm flex items-center gap-1 group-hover:gap-3 transition-all">Научете повече <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
+        </div>
+      </a>
+
+      <!-- Card 3: Пептидна терапия — deep blue gradient with molecule image -->
+      <a href="uslugi/peptidna-terapia-nad.html" class="bg-gradient-to-br from-[#0a1628] to-[#1a3050] p-8 rounded-[2rem] text-on-primary relative overflow-hidden group reveal reveal-delay-2 min-h-[220px] flex flex-col justify-end">
+        <img class="absolute inset-0 w-full h-full object-cover opacity-15 group-hover:opacity-25 group-hover:scale-110 transition-all duration-700" src="https://images.unsplash.com/photo-1628595351029-c2bf17511435?w=600&h=400&fit=crop" alt="Molecular science">
+        <div class="absolute top-4 right-4 opacity-10 group-hover:opacity-20 transition-all duration-700 group-hover:scale-150">
+          <span class="material-symbols-outlined text-[80px] text-secondary-fixed">science</span>
+        </div>
+        <div class="relative z-10 space-y-3">
+          <div class="w-10 h-10 bg-white/10 backdrop-blur-sm rounded-lg flex items-center justify-center">
+            <span class="material-symbols-outlined text-secondary-fixed text-xl" style="font-variation-settings: 'FILL' 1;">science</span>
+          </div>
+          <h3 class="text-xl font-headline font-bold">Пептидна терапия и NAD+</h3>
+          <p class="text-white/60 text-sm">BPC-157, Epitalon, NAD+ инфузии. Клетъчно обновяване и по-бързо възстановяване.</p>
+          <span class="text-secondary-fixed font-semibold text-sm flex items-center gap-1 group-hover:gap-3 transition-all">Научете повече <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
+        </div>
+      </a>
+
+      <!-- Card 4: Телемедицина — gradient with tech image -->
+      <a href="uslugi/telemedicina.html" class="bg-gradient-to-br from-[#002030] to-[#004050] p-8 rounded-[2rem] text-on-primary relative overflow-hidden group reveal reveal-delay-3 min-h-[220px] flex flex-col justify-end">
+        <img class="absolute inset-0 w-full h-full object-cover opacity-15 group-hover:opacity-25 group-hover:scale-110 transition-all duration-700" src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=400&fit=crop" alt="Telemedicine">
+        <div class="absolute top-4 right-4 opacity-10 group-hover:opacity-20 transition-all duration-700 group-hover:scale-150">
+          <span class="material-symbols-outlined text-[80px] text-tertiary-fixed">monitor_heart</span>
+        </div>
+        <div class="relative z-10 space-y-3">
+          <div class="w-10 h-10 bg-white/10 backdrop-blur-sm rounded-lg flex items-center justify-center">
+            <span class="material-symbols-outlined text-tertiary-fixed text-xl" style="font-variation-settings: 'FILL' 1;">monitor_heart</span>
+          </div>
+          <h3 class="text-xl font-headline font-bold">Телемедицина</h3>
+          <p class="text-white/60 text-sm">TaVIE платформа, смарт устройства и виртуални консултации. 24/7 от разстояние.</p>
+          <span class="text-tertiary-fixed font-semibold text-sm flex items-center gap-1 group-hover:gap-3 transition-all">Научете повече <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
+        </div>
+      </a>
+    </div>
+    <!-- More services link -->
+    <div class="mt-12 text-center reveal">
+      <a href="uslugi.html" class="inline-flex items-center gap-2 text-primary font-headline font-bold hover:text-secondary transition-colors">
+        Вижте всички 7 услуги <span class="material-symbols-outlined text-sm">arrow_forward</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DIGITAL TWIN (Dark section) ===== -->
+<section class="py-24 bg-primary text-on-primary overflow-hidden relative">
+  <div class="absolute top-0 right-0 w-1/2 h-full opacity-15 pointer-events-none">
+    <img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&h=600&fit=crop" alt="Digital health visualization">
+  </div>
+  <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+    <div class="max-w-2xl space-y-8 reveal">
+      <div class="inline-flex items-center space-x-2 bg-secondary/20 px-4 py-1.5 rounded-full">
+        <span class="material-symbols-outlined text-tertiary-fixed text-sm" style="font-variation-settings: 'FILL' 1;">hub</span>
+        <span class="text-tertiary-fixed font-semibold text-xs uppercase tracking-widest">Иновация</span>
+      </div>
+      <h2 class="text-4xl md:text-5xl font-headline font-extrabold leading-tight">Как работим — 5 стъпки</h2>
+      <p class="text-lg text-primary-fixed-dim leading-relaxed">
+        Прозрачен процес без изненади. От заявката до непрекъснатия мониторинг — вие знаете какво следва.
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6">
+        <div class="flex items-start space-x-4 reveal reveal-delay-1">
+          <span class="material-symbols-outlined text-secondary-fixed text-3xl">edit_note</span>
+          <div>
+            <h5 class="font-bold text-white">1. Заявка</h5>
+            <p class="text-sm text-primary-fixed-dim/80">Попълвате форма или се обаждате. Свързвам се до 24 часа.</p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-4 reveal reveal-delay-2">
+          <span class="material-symbols-outlined text-secondary-fixed text-3xl">videocam</span>
+          <div>
+            <h5 class="font-bold text-white">2. Консултация</h5>
+            <p class="text-sm text-primary-fixed-dim/80">Видео разговор или лична среща. Обсъждам вашите цели.</p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-4 reveal reveal-delay-3">
+          <span class="material-symbols-outlined text-secondary-fixed text-3xl">biotech</span>
+          <div>
+            <h5 class="font-bold text-white">3. Диагностика</h5>
+            <p class="text-sm text-primary-fixed-dim/80">Кръвни панели, генетика, епигенетика и биомаркери.</p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-4 reveal reveal-delay-4">
+          <span class="material-symbols-outlined text-secondary-fixed text-3xl">monitoring</span>
+          <div>
+            <h5 class="font-bold text-white">4–5. План + Мониторинг</h5>
+            <p class="text-sm text-primary-fixed-dim/80">Персонализиран протокол + 24/7 TaVIE мониторинг.</p>
+          </div>
+        </div>
+      </div>
+      <a href="kak-rabotim.html" class="inline-block bg-secondary-container text-on-secondary-container px-6 py-3 rounded-xl text-sm font-bold hover:opacity-90 transition-opacity mt-4">
+        Вижте подробно процеса
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT DOCTOR ===== -->
+<section class="py-24 bg-surface">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <div class="flex flex-col lg:flex-row gap-16 items-start">
+      <div class="lg:w-1/3 sticky top-32 reveal">
+        <div class="rounded-3xl overflow-hidden shadow-xl mb-6">
+          <img class="w-full h-80 object-cover" src="images/dr-kostov.jpg" alt="Д-р Иво Костов" loading="lazy">
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <span class="bg-secondary/10 text-secondary text-xs font-bold px-3 py-1 rounded-full">20+ години</span>
+          <span class="bg-secondary/10 text-secondary text-xs font-bold px-3 py-1 rounded-full">10+ специализации</span>
+          <span class="bg-secondary/10 text-secondary text-xs font-bold px-3 py-1 rounded-full">AI медицина</span>
+        </div>
+      </div>
+      <div class="lg:w-2/3 space-y-6 reveal reveal-delay-1">
+        <p class="text-secondary font-bold text-xs uppercase tracking-widest">За д-р Костов</p>
+        <h2 class="text-4xl font-headline font-extrabold text-primary">Д-р Иво Костов, MD</h2>
+        <p class="text-on-surface-variant text-lg leading-relaxed max-w-xl">
+          Лекар с над 20 години опит и 10+ медицински специализации. Пионер в интегрирането на AI диагностика, пептидни терапии и телемедицина в България.
+        </p>
+        <p class="text-on-surface-variant leading-relaxed max-w-xl">
+          Подходът му комбинира най-доброто от конвенционалната медицина с доказани иновации — епигенетични часовници, NAD+ терапия, дигитални близнаци — все в полза на пациента.
+        </p>
+        <a href="za-nas.html" class="inline-flex items-center gap-2 text-primary font-headline font-bold hover:text-secondary transition-colors mt-4">
+          Пълна биография <span class="material-symbols-outlined text-sm">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FINAL CTA ===== -->
+<section class="py-24 bg-primary text-on-primary relative overflow-hidden">
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-secondary blur-[120px]"></div>
+  </div>
+  <div class="max-w-3xl mx-auto px-6 text-center relative z-10 reveal">
+    <h2 class="text-4xl md:text-5xl font-headline font-extrabold leading-tight mb-6">
+      Не чакайте бъдещето.<br>Започнете сега.
+    </h2>
+    <p class="text-primary-fixed-dim text-lg mb-10 max-w-md mx-auto">Безплатна 15-минутна консултация, за да разберем дали моят подход е подходящ за вас.</p>
+    <a href="kontakt.html" class="inline-block bg-white text-primary px-10 py-4 rounded-xl font-headline font-bold text-lg hover:shadow-2xl transition-all active:scale-95">
+      Резервирайте безплатна консултация
+    </a>
+  </div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="w-full pt-16 pb-8 bg-surface-container-low">
+  <div class="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-4 gap-12 text-sm leading-relaxed">
+    <div class="md:col-span-1">
+      <span class="text-lg font-bold text-primary mb-4 block font-headline">Д-р Иво Костов</span>
+      <p class="text-on-surface-variant max-w-xs">Персонализирана медицина за дълголетие. Прецизна диагностика и непрекъснат AI мониторинг.</p>
+    </div>
+    <div>
+      <h5 class="font-bold mb-4 uppercase tracking-widest text-[10px] text-on-surface-variant">Услуги</h5>
+      <ul class="space-y-2">
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="uslugi/personalizirano-dalgoletie.html">Персонализирано дълголетие</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="uslugi/bolnitsa-vkashti.html">Болница вкъщи</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="uslugi/peptidna-terapia-nad.html">Пептиди и NAD+</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="uslugi/telemedicina.html">Телемедицина</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="uslugi.html">Всички услуги →</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5 class="font-bold mb-4 uppercase tracking-widest text-[10px] text-on-surface-variant">Компания</h5>
+      <ul class="space-y-2">
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="za-nas.html">За нас</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="kak-rabotim.html">Как работим</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="tseni.html">Цени</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="kontakt.html">Контакт</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5 class="font-bold mb-4 uppercase tracking-widest text-[10px] text-on-surface-variant">Решения</h5>
+      <ul class="space-y-2">
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="reshenia/zdrav-kiosk.html">Здравен киоск</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="reshenia/korporativno-zdrave.html">Корпоративно здраве</a></li>
+      </ul>
+      <h5 class="font-bold mt-6 mb-4 uppercase tracking-widest text-[10px] text-on-surface-variant">Правна информация</h5>
+      <ul class="space-y-2">
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Поверителност</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Общи условия</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto px-6 md:px-12 mt-16">
+    <div class="bg-outline-variant/20 h-[1px] mb-8"></div>
+    <p class="text-on-surface-variant/50 text-center text-xs">&copy; 2026 Д-р Иво Костов. Всички права запазени.</p>
+  </div>
+</footer>
+
+<script>
+// Mobile menu toggle
+document.getElementById('mobile-toggle')?.addEventListener('click', function() {
+  document.getElementById('mobile-menu')?.classList.toggle('hidden');
+});
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('active');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ===== COUNTER ANIMATION (0 → target) =====
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const target = parseInt(el.dataset.target);
+      const suffix = el.dataset.suffix || '';
+      const duration = 1500;
+      let start = null;
+      function step(ts) {
+        if (!start) start = ts;
+        const progress = Math.min((ts - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 4); // ease-out quart
+        el.textContent = Math.floor(eased * target) + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+        else el.textContent = target + suffix;
+      }
+      requestAnimationFrame(step);
+      counterObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+
+// ===== HERO PANEL CAROUSEL — 7 services cycling every 5s =====
+(function() {
+  const panels = document.querySelectorAll('.hero-panel');
+  const dots = document.querySelectorAll('.panel-dot');
+  if (!panels.length) return;
+  let current = 0;
+  let interval;
+
+  function animatePanel(panel) {
+    // Animate numbers (count up)
+    panel.querySelectorAll('.panel-number').forEach(el => {
+      const from = parseInt(el.dataset.from) || 0;
+      const to = parseInt(el.dataset.to);
+      let start = null;
+      function step(ts) {
+        if (!start) start = ts;
+        const p = Math.min((ts - start) / 1200, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.floor(from + (to - from) * eased);
+        if (p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    });
+    // Animate progress bar (NAD+ panel)
+    panel.querySelectorAll('.panel-bar').forEach(el => {
+      el.style.transition = 'width 1.5s cubic-bezier(0.22,1,0.36,1)';
+      setTimeout(() => el.style.width = '87%', 100);
+    });
+    // Animate horizontal bars (Hormone panel)
+    panel.querySelectorAll('.panel-hbar').forEach(el => {
+      el.style.transition = 'width 1s cubic-bezier(0.22,1,0.36,1)';
+      setTimeout(() => el.style.width = el.dataset.target, 200);
+    });
+  }
+
+  function resetPanel(panel) {
+    panel.querySelectorAll('.panel-number').forEach(el => el.textContent = el.dataset.from || '0');
+    panel.querySelectorAll('.panel-bar').forEach(el => { el.style.transition = 'none'; el.style.width = '0%'; });
+    panel.querySelectorAll('.panel-hbar').forEach(el => { el.style.transition = 'none'; el.style.width = '0%'; });
+  }
+
+  function goTo(idx) {
+    panels[current].classList.remove('active-panel');
+    dots[current].classList.remove('active-dot');
+    resetPanel(panels[current]);
+    current = idx;
+    panels[current].classList.add('active-panel');
+    dots[current].classList.add('active-dot');
+    animatePanel(panels[current]);
+  }
+
+  // Click dots
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      goTo(i);
+      clearInterval(interval);
+      interval = setInterval(() => goTo((current + 1) % panels.length), 5000);
+    });
+  });
+
+  // Auto-play
+  animatePanel(panels[0]); // initial
+  interval = setInterval(() => goTo((current + 1) % panels.length), 5000);
+})();
+</script>
+<script src="js/nav.js"></script>
+</body>
+</html>

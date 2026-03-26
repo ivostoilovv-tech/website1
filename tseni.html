@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html class="light" lang="bg">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Цени — Д-р Иво Костов</title>
+<meta name="description" content="Прозрачни цени за консултации, мониторинг, устройства и терапии.">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "primary": "#001e40", "primary-container": "#003366", "on-primary": "#ffffff", "on-primary-container": "#799dd6",
+        "secondary": "#00696b", "secondary-container": "#56f5f8", "on-secondary": "#ffffff", "on-secondary-container": "#006e70",
+        "tertiary": "#002324", "tertiary-container": "#003a3b", "tertiary-fixed": "#6af7fa", "tertiary-fixed-dim": "#46dadd",
+        "secondary-fixed": "#5af8fb", "secondary-fixed-dim": "#2ddbde", "primary-fixed": "#d5e3ff", "primary-fixed-dim": "#a7c8ff",
+        "surface": "#f7f9fb", "surface-container-low": "#f2f4f6", "surface-container": "#eceef0", "surface-container-high": "#e6e8ea",
+        "surface-container-lowest": "#ffffff", "on-surface": "#191c1e", "on-surface-variant": "#43474f",
+        "outline": "#737780", "outline-variant": "#c3c6d1", "error": "#ba1a1a", "error-container": "#ffdad6", "surface-tint": "#3a5f94",
+      },
+      fontFamily: { "headline": ["Manrope"], "body": ["Inter"] },
+      borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1.5rem", "3xl": "2rem", "full": "9999px" },
+    },
+  },
+}
+</script>
+<style>
+.material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+.text-gradient { background: linear-gradient(to right, #001e40, #00696b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
+.reveal.active { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 100ms; }
+.reveal-delay-2 { transition-delay: 200ms; }
+.reveal-delay-3 { transition-delay: 300ms; }
+</style>
+</head>
+<body class="bg-surface font-body text-on-surface selection:bg-secondary-container">
+
+<!-- Nav -->
+<main class="pt-20">
+
+<!-- ===== HERO ===== -->
+<section class="relative min-h-[500px] flex items-center overflow-hidden bg-primary text-on-primary">
+  <div class="absolute inset-0 z-0">
+    <div class="absolute inset-0 bg-gradient-to-br from-primary to-primary-container"></div>
+  </div>
+  <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10 py-24">
+    <div class="max-w-2xl space-y-6 reveal">
+      <div class="inline-flex items-center space-x-2 bg-white/10 px-4 py-1.5 rounded-full">
+        <span class="material-symbols-outlined text-secondary-fixed text-sm" style="font-variation-settings: 'FILL' 1;">payments</span>
+        <span class="text-secondary-fixed font-semibold text-xs uppercase tracking-widest">Ценообразуване</span>
+      </div>
+      <h1 class="text-5xl md:text-7xl font-headline font-extrabold leading-[1.08] tracking-tight">Прозрачни<br><span class="text-secondary-fixed">цени</span></h1>
+      <p class="text-xl text-primary-fixed-dim max-w-xl leading-relaxed">Без скрити такси. Знаете какво получавате.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRICING CARDS ===== -->
+<section class="py-24 bg-surface">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Essential -->
+      <div class="bg-surface-container-lowest rounded-[2rem] p-8 shadow-sm border border-outline-variant/10 flex flex-col reveal">
+        <div class="mb-8">
+          <span class="bg-secondary/10 text-secondary text-xs font-bold px-3 py-1.5 rounded-full">Начало</span>
+        </div>
+        <h3 class="text-2xl font-headline font-bold text-primary mb-2">Първоначална консултация</h3>
+        <p class="text-on-surface-variant text-sm mb-6">Подробен разговор + план за диагностика</p>
+        <p class="text-3xl font-headline font-extrabold text-primary mb-1">По запитване</p>
+        <p class="text-on-surface-variant text-xs mb-8">Свържете се за актуална цена</p>
+        <ul class="space-y-3 mb-8 flex-grow">
+          <li class="flex items-start gap-3 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-secondary text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>Подробен разговор за вашето здраве</li>
+          <li class="flex items-start gap-3 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-secondary text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>Определяне на цели и приоритети</li>
+          <li class="flex items-start gap-3 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-secondary text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>План за диагностика</li>
+        </ul>
+        <a href="kontakt.html" class="block text-center bg-surface-container-high text-primary py-3 rounded-xl font-headline font-bold text-sm hover:bg-surface-container transition-colors">Свържете се с мен</a>
+      </div>
+
+      <!-- Advanced (Featured) -->
+      <div class="bg-gradient-to-br from-primary to-primary-container rounded-[2rem] p-8 text-on-primary flex flex-col relative overflow-hidden reveal reveal-delay-1">
+        <div class="absolute top-0 right-0 p-6 opacity-10">
+          <span class="material-symbols-outlined text-[80px]">monitor_heart</span>
+        </div>
+        <div class="mb-8">
+          <span class="bg-secondary-container text-on-secondary-container text-xs font-bold px-3 py-1.5 rounded-full">Популярен</span>
+        </div>
+        <h3 class="text-2xl font-headline font-bold mb-2">Телемедицинско наблюдение</h3>
+        <p class="text-primary-fixed-dim text-sm mb-6">Смарт устройство + TaVIE мониторинг + виртуални консултации</p>
+        <p class="text-3xl font-headline font-extrabold mb-1">По запитване</p>
+        <p class="text-primary-fixed-dim text-xs mb-8">Свържете се за актуална цена</p>
+        <ul class="space-y-3 mb-8 flex-grow">
+          <li class="flex items-start gap-3 text-sm text-primary-fixed-dim"><span class="material-symbols-outlined text-secondary-fixed text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>Смарт устройство (от 700 лв)</li>
+          <li class="flex items-start gap-3 text-sm text-primary-fixed-dim"><span class="material-symbols-outlined text-secondary-fixed text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>TaVIE платформа за мониторинг</li>
+          <li class="flex items-start gap-3 text-sm text-primary-fixed-dim"><span class="material-symbols-outlined text-secondary-fixed text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>Виртуални консултации</li>
+          <li class="flex items-start gap-3 text-sm text-primary-fixed-dim"><span class="material-symbols-outlined text-secondary-fixed text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>24/7 дистанционен мониторинг</li>
+        </ul>
+        <a href="kontakt.html" class="block text-center bg-white text-primary py-3 rounded-xl font-headline font-bold text-sm hover:shadow-lg transition-all">Свържете се с мен</a>
+      </div>
+
+      <!-- Elite -->
+      <div class="bg-surface-container-lowest rounded-[2rem] p-8 shadow-sm border border-outline-variant/10 flex flex-col reveal reveal-delay-2">
+        <div class="mb-8">
+          <span class="bg-secondary/10 text-secondary text-xs font-bold px-3 py-1.5 rounded-full">Пълен пакет</span>
+        </div>
+        <h3 class="text-2xl font-headline font-bold text-primary mb-2">Абонамент за дълголетие</h3>
+        <p class="text-on-surface-variant text-sm mb-6">24/7 AI мониторинг + неограничени консултации + персонализиран протокол</p>
+        <p class="text-3xl font-headline font-extrabold text-primary mb-1">По запитване</p>
+        <p class="text-on-surface-variant text-xs mb-8">Свържете се за актуална цена</p>
+        <ul class="space-y-3 mb-8 flex-grow">
+          <li class="flex items-start gap-3 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-secondary text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>24/7 AI мониторинг</li>
+          <li class="flex items-start gap-3 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-secondary text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>Неограничени виртуални консултации</li>
+          <li class="flex items-start gap-3 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-secondary text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>Персонализиран протокол за дълголетие</li>
+          <li class="flex items-start gap-3 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-secondary text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>Епигенетични тестове</li>
+        </ul>
+        <a href="kontakt.html" class="block text-center bg-surface-container-high text-primary py-3 rounded-xl font-headline font-bold text-sm hover:bg-surface-container transition-colors">Свържете се с мен</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ADDITIONAL PRICING ===== -->
+<section class="py-24 bg-surface-container-lowest">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <div class="mb-16 reveal">
+      <h2 class="text-4xl font-headline font-extrabold text-primary mb-4">Допълнителни услуги и устройства</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-white/70 backdrop-blur-xl rounded-[2rem] p-8 shadow-sm reveal">
+        <span class="material-symbols-outlined text-secondary text-3xl mb-4" style="font-variation-settings: 'FILL' 1;">watch</span>
+        <h3 class="text-lg font-headline font-bold text-primary mb-2">Смарт устройства</h3>
+        <p class="text-on-surface-variant text-sm mb-4">Samsung Galaxy Watch 6 / Huawei GT 4 / Apple Watch 9</p>
+        <p class="text-2xl font-headline font-extrabold text-secondary">700 лв</p>
+        <p class="text-on-surface-variant text-xs">за устройство</p>
+      </div>
+      <div class="bg-white/70 backdrop-blur-xl rounded-[2rem] p-8 shadow-sm reveal reveal-delay-1">
+        <span class="material-symbols-outlined text-secondary text-3xl mb-4" style="font-variation-settings: 'FILL' 1;">health_metrics</span>
+        <h3 class="text-lg font-headline font-bold text-primary mb-2">Мобилен здравен киоск</h3>
+        <p class="text-on-surface-variant text-sm mb-4">Базово устройство с 16 функции за здравен скрининг</p>
+        <p class="text-2xl font-headline font-extrabold text-secondary">20 420 лв</p>
+        <p class="text-on-surface-variant text-xs">с ДДС</p>
+      </div>
+      <div class="bg-white/70 backdrop-blur-xl rounded-[2rem] p-8 shadow-sm reveal reveal-delay-2">
+        <span class="material-symbols-outlined text-secondary text-3xl mb-4" style="font-variation-settings: 'FILL' 1;">bolt</span>
+        <h3 class="text-lg font-headline font-bold text-primary mb-2">Стимулация на вагусов нерв</h3>
+        <p class="text-on-surface-variant text-sm mb-4">Курс от 3-5 сесии</p>
+        <p class="text-2xl font-headline font-extrabold text-secondary">800 лв</p>
+        <p class="text-on-surface-variant text-xs">на сесия | Курс: 2400-4000 лв</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FINAL CTA ===== -->
+<section class="py-24 bg-primary text-on-primary relative overflow-hidden">
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-secondary blur-[120px]"></div>
+  </div>
+  <div class="max-w-3xl mx-auto px-6 text-center relative z-10 reveal">
+    <h2 class="text-4xl md:text-5xl font-headline font-extrabold leading-tight mb-6">Имате въпроси за ценообразуването?</h2>
+    <p class="text-primary-fixed-dim text-lg mb-10 max-w-md mx-auto">Свържете се с мен и ще ви помогна да изберете най-подходящия план.</p>
+    <a href="kontakt.html" class="inline-block bg-white text-primary px-10 py-4 rounded-xl font-headline font-bold text-lg hover:shadow-2xl transition-all active:scale-95">Свържете се с мен</a>
+  </div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="w-full pt-16 pb-8 bg-surface-container-low">
+  <div class="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-4 gap-12 text-sm leading-relaxed">
+    <div class="md:col-span-1">
+      <span class="text-lg font-bold text-primary mb-4 block font-headline">Д-р Иво Костов</span>
+      <p class="text-on-surface-variant max-w-xs">Персонализирана медицина за дълголетие. Прецизна диагностика и непрекъснат AI мониторинг.</p>
+    </div>
+    <div>
+      <h5 class="font-bold mb-4 uppercase tracking-widest text-[10px] text-on-surface-variant">Услуги</h5>
+      <ul class="space-y-2">
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="uslugi/personalizirano-dalgoletie.html">Персонализирано дълголетие</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="uslugi/bolnitsa-vkashti.html">Болница вкъщи</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="uslugi/peptidna-terapia-nad.html">Пептиди и NAD+</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="uslugi/telemedicina.html">Телемедицина</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="uslugi.html">Всички услуги →</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5 class="font-bold mb-4 uppercase tracking-widest text-[10px] text-on-surface-variant">Компания</h5>
+      <ul class="space-y-2">
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="za-nas.html">За нас</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="kak-rabotim.html">Как работим</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="tseni.html">Цени</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="kontakt.html">Контакт</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5 class="font-bold mb-4 uppercase tracking-widest text-[10px] text-on-surface-variant">Решения</h5>
+      <ul class="space-y-2">
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="reshenia/zdrav-kiosk.html">Здравен киоск</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="reshenia/korporativno-zdrave.html">Корпоративно здраве</a></li>
+      </ul>
+      <h5 class="font-bold mt-6 mb-4 uppercase tracking-widest text-[10px] text-on-surface-variant">Правна информация</h5>
+      <ul class="space-y-2">
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Поверителност</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Общи условия</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto px-6 md:px-12 mt-16">
+    <div class="bg-outline-variant/20 h-[1px] mb-8"></div>
+    <p class="text-on-surface-variant/50 text-center text-xs">&copy; 2026 Д-р Иво Костов. Всички права запазени.</p>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('active');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+document.getElementById('mobile-toggle')?.addEventListener('click', function() {
+  document.getElementById('mobile-menu')?.classList.toggle('hidden');
+});
+</script>
+<script src="js/nav.js"></script>
+</body>
+</html>

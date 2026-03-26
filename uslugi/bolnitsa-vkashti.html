@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html class="light" lang="bg">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Болница вкъщи — Интензивно лечение в дома</title>
+<meta name="description" content="24/7 мониторинг и домашни грижи за пациенти с хронични и остри състояния.">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+tailwind.config={darkMode:"class",theme:{extend:{colors:{"primary":"#001e40","primary-container":"#003366","on-primary":"#ffffff","on-primary-container":"#799dd6","secondary":"#00696b","secondary-container":"#56f5f8","on-secondary":"#ffffff","on-secondary-container":"#006e70","tertiary":"#002324","tertiary-container":"#003a3b","tertiary-fixed":"#6af7fa","tertiary-fixed-dim":"#46dadd","secondary-fixed":"#5af8fb","secondary-fixed-dim":"#2ddbde","primary-fixed":"#d5e3ff","primary-fixed-dim":"#a7c8ff","surface":"#f7f9fb","surface-container-low":"#f2f4f6","surface-container":"#eceef0","surface-container-high":"#e6e8ea","surface-container-lowest":"#ffffff","on-surface":"#191c1e","on-surface-variant":"#43474f","outline":"#737780","outline-variant":"#c3c6d1","error":"#ba1a1a","error-container":"#ffdad6","surface-tint":"#3a5f94"},fontFamily:{"headline":["Manrope"],"body":["Inter"]},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","2xl":"1.5rem","3xl":"2rem","full":"9999px"}}}}}
+</script>
+<style>
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24}
+.text-gradient{background:linear-gradient(to right,#001e40,#00696b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.reveal{opacity:0;transform:translateY(30px);transition:all .8s cubic-bezier(.22,1,.36,1)}
+.reveal.active{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:100ms}.reveal-delay-2{transition-delay:200ms}.reveal-delay-3{transition-delay:300ms}.reveal-delay-4{transition-delay:400ms}
+
+/* === Scroll-Expansion Hero: Vital Monitor === */
+.seh-section{position:relative;min-height:100dvh;overflow:hidden}
+.seh-bg{position:absolute;inset:0;z-index:0}.seh-bg img{width:100%;height:100%;object-fit:cover}
+.seh-title{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:25;display:flex;flex-direction:column;align-items:center;gap:.25rem;pointer-events:none}
+.seh-title-line{font-family:'Manrope',sans-serif;font-weight:800;color:#fff;white-space:nowrap;text-shadow:0 2px 20px rgba(0,0,0,.6),0 4px 40px rgba(0,0,0,.4)}
+
+/* Vital monitor panel */
+.vital-panel{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:15;border-radius:1.5rem;overflow:hidden;
+  background:linear-gradient(145deg,#0a1a2e,#001e40 60%,#003050);box-shadow:0 0 80px rgba(0,105,107,.2)}
+
+/* ECG animation */
+@keyframes ecg-trace{to{stroke-dashoffset:0}}
+@keyframes ecg-loop{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.ecg-line{stroke-dasharray:1200;stroke-dashoffset:1200;animation:ecg-trace 3s ease forwards}
+.ecg-scroll{animation:ecg-loop 4s linear infinite}
+
+/* Pulse glow */
+@keyframes pulse-glow{0%,100%{box-shadow:0 0 8px rgba(239,68,68,.3)}50%{box-shadow:0 0 24px rgba(239,68,68,.7)}}
+.pulse-dot{animation:pulse-glow 1s ease infinite}
+
+/* Number tick */
+@keyframes num-tick{0%,100%{opacity:1}50%{opacity:.6}}
+.num-tick{animation:num-tick 1s ease infinite}
+
+@keyframes scroll-bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+.seh-scroll-hint{animation:scroll-bounce 2s ease infinite}
+
+/* SpO2 wave */
+@keyframes spo2-wave{0%{transform:translateX(0)}100%{transform:translateX(-200px)}}
+.spo2-wave{animation:spo2-wave 3s linear infinite}
+</style>
+</head>
+<body class="bg-surface font-body text-on-surface selection:bg-secondary-container">
+
+<main class="pt-20">
+
+<!-- ===== SCROLL-EXPANSION HERO: Vital Monitor ===== -->
+<section class="seh-section" id="seh-hero">
+  <div class="seh-bg" id="seh-bg">
+    <img src="https://images.unsplash.com/photo-1586105251261-72a756497a11?w=1920&h=1080&fit=crop&q=90" alt="Doctor visiting patient at home">
+    <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60 backdrop-blur-[6px]"></div>
+  </div>
+
+  <!-- Title -->
+  <div class="seh-title" id="seh-title">
+    <span class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm px-4 py-1.5 rounded-full mb-3 border border-white/20" id="seh-badge">
+      <span class="material-symbols-outlined text-secondary-fixed text-sm" style="font-variation-settings:'FILL' 1">home_health</span>
+      <span class="text-white font-semibold text-xs uppercase tracking-widest">Болница вкъщи</span>
+    </span>
+    <span class="seh-title-line text-5xl md:text-7xl lg:text-8xl" id="seh-line1">Интензивно</span>
+    <span class="seh-title-line text-5xl md:text-7xl lg:text-8xl" id="seh-line2">лечение от дома</span>
+    <span class="text-base md:text-lg mt-4 font-medium max-w-lg text-center leading-relaxed inline-block px-5 py-2 rounded-xl" id="seh-sub" style="color:#fff;text-shadow:0 2px 16px rgba(0,0,0,.7);background:rgba(0,0,0,.25);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.1)">24/7 мониторинг, домашни посещения и AI наблюдение</span>
+  </div>
+
+  <!-- Vital Monitor Panel -->
+  <div class="vital-panel text-white" id="vital-panel" style="width:200px;height:140px;opacity:0;">
+    <div class="p-4 md:p-6 h-full flex flex-col justify-between relative overflow-hidden" id="vital-inner">
+      <!-- Header -->
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-red-400 text-lg" style="font-variation-settings:'FILL' 1">monitor_heart</span>
+          <span class="text-[10px] md:text-xs font-bold uppercase tracking-widest text-red-400">ЖИЗНЕНИ ПОКАЗАТЕЛИ</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="w-2 h-2 bg-green-400 rounded-full pulse-dot"></div>
+          <span class="text-green-400 text-[10px] font-bold">24/7</span>
+        </div>
+      </div>
+
+      <!-- ECG Waveform -->
+      <div class="relative h-16 md:h-24 overflow-hidden my-2" id="ecg-container">
+        <svg viewBox="0 0 800 100" class="absolute inset-0 w-[200%] h-full ecg-scroll" preserveAspectRatio="none">
+          <path d="M0,50 L30,50 L40,50 L50,50 L60,20 L65,80 L70,10 L75,60 L80,50 L120,50 L130,50 L140,50 L150,20 L155,80 L160,10 L165,60 L170,50 L210,50 L220,50 L230,50 L240,20 L245,80 L250,10 L255,60 L260,50 L300,50 L310,50 L320,50 L330,20 L335,80 L340,10 L345,60 L350,50 L400,50 L410,50 L420,50 L430,20 L435,80 L440,10 L445,60 L450,50 L490,50 L500,50 L510,50 L520,20 L525,80 L530,10 L535,60 L540,50 L580,50 L590,50 L600,50 L610,20 L615,80 L620,10 L625,60 L630,50 L670,50 L680,50 L690,50 L700,20 L705,80 L710,10 L715,60 L720,50 L800,50" fill="none" stroke="#22c55e" stroke-width="2" class="ecg-line"/>
+        </svg>
+      </div>
+
+      <!-- Vital readings grid -->
+      <div class="grid grid-cols-4 gap-2" id="vital-readings">
+        <div class="bg-white/5 rounded-xl p-2 text-center border border-white/5">
+          <p class="text-[8px] text-white/30 uppercase">Пулс</p>
+          <p class="text-lg md:text-xl font-headline font-bold text-green-400 num-tick" id="v-pulse">72</p>
+          <p class="text-[8px] text-white/30">bpm</p>
+        </div>
+        <div class="bg-white/5 rounded-xl p-2 text-center border border-white/5">
+          <p class="text-[8px] text-white/30 uppercase">SpO2</p>
+          <p class="text-lg md:text-xl font-headline font-bold text-blue-400">98%</p>
+          <p class="text-[8px] text-white/30">нормално</p>
+        </div>
+        <div class="bg-white/5 rounded-xl p-2 text-center border border-white/5">
+          <p class="text-[8px] text-white/30 uppercase">Темп.</p>
+          <p class="text-lg md:text-xl font-headline font-bold text-amber-400">36.6</p>
+          <p class="text-[8px] text-white/30">°C</p>
+        </div>
+        <div class="bg-white/5 rounded-xl p-2 text-center border border-white/5">
+          <p class="text-[8px] text-white/30 uppercase">К. нал.</p>
+          <p class="text-lg md:text-xl font-headline font-bold text-purple-400">120</p>
+          <p class="text-[8px] text-white/30">/80</p>
+        </div>
+      </div>
+
+      <!-- Status bar -->
+      <div class="flex items-center justify-between mt-2">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-green-400 text-sm" style="font-variation-settings:'FILL' 1">check_circle</span>
+          <span class="text-[10px] text-green-400 font-bold">Всички показатели — норма</span>
+        </div>
+        <span class="text-[10px] text-white/20">Последно: 2 сек</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll hint -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-2" id="seh-hint">
+    <span class="text-white/60 text-xs font-medium uppercase tracking-widest">Scroll to explore</span>
+    <span class="material-symbols-outlined text-white/60 text-lg seh-scroll-hint">expand_more</span>
+  </div>
+
+  <!-- After expansion CTA -->
+  <div class="absolute bottom-0 left-0 w-full z-30 opacity-0" id="seh-content-after">
+    <div class="bg-gradient-to-t from-surface via-surface/95 to-transparent pt-16 pb-8">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-4">
+          <div class="w-10 h-10 bg-red-500/10 rounded-xl flex items-center justify-center">
+            <span class="material-symbols-outlined text-red-500" style="font-variation-settings:'FILL' 1">monitor_heart</span>
+          </div>
+          <div>
+            <p class="font-headline font-bold text-primary text-base">Болница вкъщи</p>
+            <p class="text-on-surface-variant text-sm">Интензивно лечение и 24/7 мониторинг в домашна среда</p>
+          </div>
+        </div>
+        <a href="../kontakt.html" class="inline-block bg-primary text-on-primary px-6 py-3 rounded-xl font-headline font-bold text-sm hover:shadow-lg transition-all active:scale-95 shrink-0 shadow-lg shadow-primary/20">Резервирайте консултация</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-24 bg-surface">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <div class="max-w-3xl reveal">
+      <h2 class="text-4xl font-headline font-extrabold text-primary mb-6">Какво представлява</h2>
+      <p class="text-on-surface-variant text-lg leading-relaxed">Болница вкъщи е модел на дистанционна остра грижа, при който пациенти с тежки състояния получават болнично ниво на лечение в собствения си дом. AI система наблюдава жизнените показатели непрекъснато, а медицински екип (лекар и медицински сестри) посещава при сигнал от данните или по график.</p>
+    </div>
+  </div>
+</section>
+
+<section class="py-24 bg-surface-container-lowest">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <div class="mb-16 reveal">
+      <h2 class="text-4xl font-headline font-extrabold text-primary mb-4">Какво лекувам вкъщи</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="bg-white/70 backdrop-blur-xl rounded-[2rem] p-6 shadow-sm flex items-start gap-4 reveal">
+        <span class="material-symbols-outlined text-secondary" style="font-variation-settings:'FILL' 1">cardiology</span>
+        <p class="text-on-surface-variant">Сърдечна недостатъчност</p>
+      </div>
+      <div class="bg-white/70 backdrop-blur-xl rounded-[2rem] p-6 shadow-sm flex items-start gap-4 reveal reveal-delay-1">
+        <span class="material-symbols-outlined text-secondary" style="font-variation-settings:'FILL' 1">pulmonology</span>
+        <p class="text-on-surface-variant">Хронична обструктивна белодробна болест (ХОББ)</p>
+      </div>
+      <div class="bg-white/70 backdrop-blur-xl rounded-[2rem] p-6 shadow-sm flex items-start gap-4 reveal reveal-delay-2">
+        <span class="material-symbols-outlined text-secondary" style="font-variation-settings:'FILL' 1">glucose</span>
+        <p class="text-on-surface-variant">Усложнен диабет</p>
+      </div>
+      <div class="bg-white/70 backdrop-blur-xl rounded-[2rem] p-6 shadow-sm flex items-start gap-4 reveal">
+        <span class="material-symbols-outlined text-secondary" style="font-variation-settings:'FILL' 1">surgical</span>
+        <p class="text-on-surface-variant">Постоперативно възстановяване</p>
+      </div>
+      <div class="bg-white/70 backdrop-blur-xl rounded-[2rem] p-6 shadow-sm flex items-start gap-4 reveal reveal-delay-1">
+        <span class="material-symbols-outlined text-secondary" style="font-variation-settings:'FILL' 1">healing</span>
+        <p class="text-on-surface-variant">Хронична болка</p>
+      </div>
+      <div class="bg-white/70 backdrop-blur-xl rounded-[2rem] p-6 shadow-sm flex items-start gap-4 reveal reveal-delay-2">
+        <span class="material-symbols-outlined text-secondary" style="font-variation-settings:'FILL' 1">monitor_heart</span>
+        <p class="text-on-surface-variant">Наблюдение на хронично болни и реанимация при необходимост</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-24 bg-surface">
+  <div class="max-w-4xl mx-auto px-6 md:px-12">
+    <div class="mb-16 reveal"><h2 class="text-4xl font-headline font-extrabold text-primary">Как работи</h2></div>
+    <div class="space-y-0">
+      <div class="relative pl-16 pb-16 border-l-2 border-secondary/20 reveal">
+        <div class="absolute left-0 top-0 -translate-x-1/2 w-10 h-10 bg-secondary text-white rounded-full flex items-center justify-center font-headline font-bold text-sm">1</div>
+        <div class="bg-surface-container-lowest p-6 rounded-[2rem] shadow-sm border border-outline-variant/10">
+          <h3 class="font-headline font-bold text-primary mb-2">Начална оценка</h3>
+          <p class="text-on-surface-variant text-sm">Калибриране на мониториращите устройства по вашите базови параметри.</p>
+        </div>
+      </div>
+      <div class="relative pl-16 pb-16 border-l-2 border-secondary/20 reveal reveal-delay-1">
+        <div class="absolute left-0 top-0 -translate-x-1/2 w-10 h-10 bg-secondary text-white rounded-full flex items-center justify-center font-headline font-bold text-sm">2</div>
+        <div class="bg-surface-container-lowest p-6 rounded-[2rem] shadow-sm border border-outline-variant/10">
+          <h3 class="font-headline font-bold text-primary mb-2">Монтиране на сензори</h3>
+          <p class="text-on-surface-variant text-sm">Свързване с TaVIE платформата. Кръвно налягане, SPO2, ЕКГ, температура, сърдечен ритъм — всичко се предава автоматично.</p>
+        </div>
+      </div>
+      <div class="relative pl-16 pb-16 border-l-2 border-secondary/20 reveal reveal-delay-2">
+        <div class="absolute left-0 top-0 -translate-x-1/2 w-10 h-10 bg-secondary text-white rounded-full flex items-center justify-center font-headline font-bold text-sm">3</div>
+        <div class="bg-surface-container-lowest p-6 rounded-[2rem] shadow-sm border border-outline-variant/10">
+          <h3 class="font-headline font-bold text-primary mb-2">Денонощно AI наблюдение</h3>
+          <p class="text-on-surface-variant text-sm">При отклонение от вашите нормални стойности, системата изпраща известие на медицинския екип.</p>
+        </div>
+      </div>
+      <div class="relative pl-16 reveal reveal-delay-3">
+        <div class="absolute left-0 top-0 -translate-x-1/2 w-10 h-10 bg-secondary text-white rounded-full flex items-center justify-center font-headline font-bold text-sm">4</div>
+        <div class="bg-surface-container-lowest p-6 rounded-[2rem] shadow-sm border border-outline-variant/10">
+          <h3 class="font-headline font-bold text-primary mb-2">Домашни посещения при нужда</h3>
+          <p class="text-on-surface-variant text-sm">Лекар или медицинска сестра идва при вас, когато данните го изискват — не по разписание.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-24 bg-surface-container-lowest">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <div class="mb-16 reveal"><h2 class="text-4xl font-headline font-extrabold text-primary">Защо вкъщи?</h2></div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="bg-white/70 backdrop-blur-xl rounded-[2rem] p-6 shadow-sm reveal"><span class="material-symbols-outlined text-secondary mb-3" style="font-variation-settings:'FILL' 1">home</span><p class="text-on-surface-variant text-sm">По-бързо възстановяване в позната среда</p></div>
+      <div class="bg-white/70 backdrop-blur-xl rounded-[2rem] p-6 shadow-sm reveal reveal-delay-1"><span class="material-symbols-outlined text-secondary mb-3" style="font-variation-settings:'FILL' 1">shield</span><p class="text-on-surface-variant text-sm">Без чакане, без болнични инфекции</p></div>
+      <div class="bg-white/70 backdrop-blur-xl rounded-[2rem] p-6 shadow-sm reveal reveal-delay-2"><span class="material-symbols-outlined text-secondary mb-3" style="font-variation-settings:'FILL' 1">monitoring</span><p class="text-on-surface-variant text-sm">Непрекъснат мониторинг вместо проверка на всеки 4-6 часа</p></div>
+      <div class="bg-white/70 backdrop-blur-xl rounded-[2rem] p-6 shadow-sm reveal"><span class="material-symbols-outlined text-secondary mb-3" style="font-variation-settings:'FILL' 1">family_restroom</span><p class="text-on-surface-variant text-sm">Семейството е до вас</p></div>
+      <div class="bg-white/70 backdrop-blur-xl rounded-[2rem] p-6 shadow-sm reveal reveal-delay-1"><span class="material-symbols-outlined text-secondary mb-3" style="font-variation-settings:'FILL' 1">savings</span><p class="text-on-surface-variant text-sm">По-ниска цена от болничен престой</p></div>
+      <div class="bg-white/70 backdrop-blur-xl rounded-[2rem] p-6 shadow-sm reveal reveal-delay-2"><span class="material-symbols-outlined text-secondary mb-3" style="font-variation-settings:'FILL' 1">smart_toy</span><p class="text-on-surface-variant text-sm">AI улавя промени, които човешкото око може да пропусне</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="py-24 bg-primary text-on-primary relative overflow-hidden">
+  <div class="absolute inset-0 opacity-10"><div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-secondary blur-[120px]"></div></div>
+  <div class="max-w-3xl mx-auto px-6 text-center relative z-10 reveal">
+    <h2 class="text-4xl md:text-5xl font-headline font-extrabold leading-tight mb-6">Грижата идва при вас.</h2>
+    <p class="text-primary-fixed-dim text-lg mb-10 max-w-md mx-auto">Свържете се с мен, за да разберете как болница вкъщи може да помогне на вас или на ваш близък.</p>
+    <a href="../kontakt.html" class="inline-block bg-white text-primary px-10 py-4 rounded-xl font-headline font-bold text-lg hover:shadow-2xl transition-all active:scale-95">Резервирайте консултация</a>
+  </div>
+</section>
+
+</main>
+
+<footer class="w-full pt-16 pb-8 bg-surface-container-low">
+  <div class="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-4 gap-12 text-sm leading-relaxed">
+    <div class="md:col-span-1"><span class="text-lg font-bold text-primary mb-4 block font-headline">Д-р Иво Костов</span><p class="text-on-surface-variant max-w-xs">Персонализирана медицина за дълголетие. Прецизна диагностика и непрекъснат AI мониторинг.</p></div>
+    <div><h5 class="font-bold mb-4 uppercase tracking-widest text-[10px] text-on-surface-variant">Услуги</h5><ul class="space-y-2"><li><a class="text-on-surface-variant hover:text-primary transition-colors" href="../uslugi/personalizirano-dalgoletie.html">Персонализирано дълголетие</a></li><li><a class="text-on-surface-variant hover:text-primary transition-colors" href="../uslugi/bolnitsa-vkashti.html">Болница вкъщи</a></li><li><a class="text-on-surface-variant hover:text-primary transition-colors" href="../uslugi/peptidna-terapia-nad.html">Пептиди и NAD+</a></li><li><a class="text-on-surface-variant hover:text-primary transition-colors" href="../uslugi/telemedicina.html">Телемедицина</a></li><li><a class="text-on-surface-variant hover:text-primary transition-colors" href="../uslugi.html">Всички услуги →</a></li></ul></div>
+    <div><h5 class="font-bold mb-4 uppercase tracking-widest text-[10px] text-on-surface-variant">Компания</h5><ul class="space-y-2"><li><a class="text-on-surface-variant hover:text-primary transition-colors" href="../za-nas.html">За нас</a></li><li><a class="text-on-surface-variant hover:text-primary transition-colors" href="../kak-rabotim.html">Как работим</a></li><li><a class="text-on-surface-variant hover:text-primary transition-colors" href="../tseni.html">Цени</a></li><li><a class="text-on-surface-variant hover:text-primary transition-colors" href="../kontakt.html">Контакт</a></li></ul></div>
+    <div><h5 class="font-bold mb-4 uppercase tracking-widest text-[10px] text-on-surface-variant">Решения</h5><ul class="space-y-2"><li><a class="text-on-surface-variant hover:text-primary transition-colors" href="../reshenia/zdrav-kiosk.html">Здравен киоск</a></li><li><a class="text-on-surface-variant hover:text-primary transition-colors" href="../reshenia/korporativno-zdrave.html">Корпоративно здраве</a></li></ul><h5 class="font-bold mt-6 mb-4 uppercase tracking-widest text-[10px] text-on-surface-variant">Правна информация</h5><ul class="space-y-2"><li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Поверителност</a></li><li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Общи условия</a></li></ul></div>
+  </div>
+  <div class="max-w-7xl mx-auto px-6 md:px-12 mt-16"><div class="bg-outline-variant/20 h-[1px] mb-8"></div><p class="text-on-surface-variant/50 text-center text-xs">&copy; 2026 Д-р Иво Костов. Всички права запазени.</p></div>
+</footer>
+
+<script>
+// Reveal observer
+const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('active');observer.unobserve(entry.target)}})},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+// Live pulse number simulation
+(function(){
+  const pulseEl = document.getElementById('v-pulse');
+  if (!pulseEl) return;
+  setInterval(() => {
+    const base = 72;
+    const variation = Math.floor(Math.random() * 5) - 2; // 70-74
+    pulseEl.textContent = base + variation;
+  }, 1200);
+})();
+
+// ==========================================
+// Vital Monitor Scroll Expansion (spring physics)
+// ==========================================
+(function(){
+  let target=0, current=0, expanded=false, touchStartY=0, rafId=null;
+  const SPRING = 0.07;
+  const mob = () => window.innerWidth < 768;
+
+  const bg = document.getElementById('seh-bg');
+  const panel = document.getElementById('vital-panel');
+  const inner = document.getElementById('vital-inner');
+  const line1 = document.getElementById('seh-line1');
+  const line2 = document.getElementById('seh-line2');
+  const badge = document.getElementById('seh-badge');
+  const sub = document.getElementById('seh-sub');
+  const hint = document.getElementById('seh-hint');
+  const after = document.getElementById('seh-content-after');
+  if (!panel) return;
+
+  function lerp(a,b,t){return a+(b-a)*t}
+
+  function render(){
+    current = lerp(current, target, SPRING);
+    if (Math.abs(current-target)<.001) current=target;
+    const p=current, m=mob(), vw=window.innerWidth, vh=window.innerHeight;
+
+    // Panel: small → large single monitor
+    const startW=m?160:200, startH=m?100:140;
+    const endW=m?(vw*.92):Math.min(vw*.7,1000);
+    const endH=m?(vh*.6):Math.min(vh*.7,480);
+    const w=startW+p*(endW-startW);
+    const h=startH+p*(endH-startH);
+    panel.style.width=w+'px';
+    panel.style.height=h+'px';
+
+    // Fade in
+    panel.style.opacity=Math.min(p*5,1);
+
+    // Radius shrinks
+    panel.style.borderRadius=Math.max(24-p*10,10)+'px';
+
+    // Background fades
+    bg.style.opacity=1-p;
+
+    // Title splits
+    const tx=p*(m?50:100);
+    line1.style.transform='translateX(-'+tx+'vw)';
+    line2.style.transform='translateX('+tx+'vw)';
+    const titleOp=Math.max(1-p*2.2,0);
+    line1.style.opacity=titleOp;
+    line2.style.opacity=titleOp;
+    if(badge)badge.style.opacity=titleOp;
+    if(sub){sub.style.opacity=titleOp;sub.style.transform='translateY('+(p*20)+'px)'}
+    hint.style.opacity=Math.max(1-p*4,0);
+    after.style.opacity=p>.6?Math.min((p-.6)/.25,1):0;
+
+    // Inner content visibility
+    if(inner) inner.style.opacity=Math.min(p*2.5,1);
+
+    if(Math.abs(current-target)>.0005){rafId=requestAnimationFrame(render)}else{rafId=null}
+  }
+
+  function startRender(){if(!rafId)rafId=requestAnimationFrame(render)}
+
+  window.addEventListener('wheel',function(e){
+    if(expanded&&e.deltaY<0&&window.scrollY<=5){expanded=false;e.preventDefault()}
+    else if(!expanded){e.preventDefault();target=Math.min(Math.max(target+e.deltaY*.0008,0),1);if(target>=1)expanded=true;startRender()}
+  },{passive:false});
+
+  window.addEventListener('touchstart',function(e){touchStartY=e.touches[0].clientY},{passive:false});
+  window.addEventListener('touchmove',function(e){
+    if(!touchStartY)return;const dy=touchStartY-e.touches[0].clientY;
+    if(expanded&&dy<-20&&window.scrollY<=5){expanded=false;e.preventDefault()}
+    else if(!expanded){e.preventDefault();target=Math.min(Math.max(target+dy*(dy<0?.007:.004),0),1);if(target>=1)expanded=true;touchStartY=e.touches[0].clientY;startRender()}
+  },{passive:false});
+  window.addEventListener('touchend',function(){touchStartY=0});
+  window.addEventListener('scroll',function(){if(!expanded)window.scrollTo(0,0)});
+
+  render();
+})();
+</script>
+<script src="../js/nav.js"></script>
+</body>
+</html>

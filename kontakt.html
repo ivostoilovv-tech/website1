@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html class="light" lang="bg">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Контакт — Резервирайте час</title>
+<meta name="description" content="Свържете се с Д-р Иво Костов. Телефон, имейл, форма за запитване.">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "primary": "#001e40", "primary-container": "#003366", "on-primary": "#ffffff", "on-primary-container": "#799dd6",
+        "secondary": "#00696b", "secondary-container": "#56f5f8", "on-secondary": "#ffffff", "on-secondary-container": "#006e70",
+        "tertiary": "#002324", "tertiary-container": "#003a3b", "tertiary-fixed": "#6af7fa", "tertiary-fixed-dim": "#46dadd",
+        "secondary-fixed": "#5af8fb", "secondary-fixed-dim": "#2ddbde", "primary-fixed": "#d5e3ff", "primary-fixed-dim": "#a7c8ff",
+        "surface": "#f7f9fb", "surface-container-low": "#f2f4f6", "surface-container": "#eceef0", "surface-container-high": "#e6e8ea",
+        "surface-container-lowest": "#ffffff", "on-surface": "#191c1e", "on-surface-variant": "#43474f",
+        "outline": "#737780", "outline-variant": "#c3c6d1", "error": "#ba1a1a", "error-container": "#ffdad6", "surface-tint": "#3a5f94",
+      },
+      fontFamily: { "headline": ["Manrope"], "body": ["Inter"] },
+      borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1.5rem", "3xl": "2rem", "full": "9999px" },
+    },
+  },
+}
+</script>
+<style>
+.material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+.text-gradient { background: linear-gradient(to right, #001e40, #00696b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
+.reveal.active { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 100ms; }
+.reveal-delay-2 { transition-delay: 200ms; }
+</style>
+</head>
+<body class="bg-surface font-body text-on-surface selection:bg-secondary-container">
+
+<!-- Nav -->
+<main class="pt-20">
+
+<!-- ===== HERO ===== -->
+<section class="relative min-h-[500px] flex items-center overflow-hidden bg-primary text-on-primary">
+  <div class="absolute inset-0 z-0">
+    <div class="absolute inset-0 bg-gradient-to-br from-primary to-primary-container"></div>
+  </div>
+  <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10 py-24">
+    <div class="max-w-2xl space-y-6 reveal">
+      <div class="inline-flex items-center space-x-2 bg-white/10 px-4 py-1.5 rounded-full">
+        <span class="material-symbols-outlined text-secondary-fixed text-sm" style="font-variation-settings: 'FILL' 1;">mail</span>
+        <span class="text-secondary-fixed font-semibold text-xs uppercase tracking-widest">Контакт</span>
+      </div>
+      <h1 class="text-5xl md:text-7xl font-headline font-extrabold leading-[1.08] tracking-tight">Свържете се<br><span class="text-secondary-fixed">с мен</span></h1>
+      <p class="text-xl text-primary-fixed-dim max-w-xl leading-relaxed">Имате въпрос или искате да запазите час? Пишете ми или ми се обадете.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT SECTION ===== -->
+<section class="py-24 bg-surface">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+      <!-- Contact Info -->
+      <div class="space-y-8 reveal">
+        <h2 class="text-3xl font-headline font-extrabold text-primary">Информация за контакт</h2>
+        <div class="space-y-6">
+          <div class="flex items-start gap-5">
+            <div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center text-secondary shrink-0">
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">phone</span>
+            </div>
+            <div>
+              <h4 class="font-headline font-bold text-primary mb-1">Телефон</h4>
+              <p class="text-on-surface-variant">Свържете се с мен за повече информация</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-5">
+            <div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center text-secondary shrink-0">
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">mail</span>
+            </div>
+            <div>
+              <h4 class="font-headline font-bold text-primary mb-1">Имейл</h4>
+              <p class="text-on-surface-variant">Пишете ни за запитвания и резервации</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-5">
+            <div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center text-secondary shrink-0">
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">schedule</span>
+            </div>
+            <div>
+              <h4 class="font-headline font-bold text-primary mb-1">Работно време</h4>
+              <p class="text-on-surface-variant">Понеделник - Петък</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-5">
+            <div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center text-secondary shrink-0">
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">location_on</span>
+            </div>
+            <div>
+              <h4 class="font-headline font-bold text-primary mb-1">Адрес</h4>
+              <p class="text-on-surface-variant">България</p>
+            </div>
+          </div>
+        </div>
+        <!-- Note -->
+        <div class="bg-secondary/5 rounded-[2rem] p-6 mt-8">
+          <p class="text-on-surface-variant text-sm leading-relaxed"><span class="font-bold text-secondary">Бележка:</span> Повечето от услугите се извършват дистанционно или вкъщи. Не е необходимо да идвате в кабинет за първоначалната консултация.</p>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="reveal reveal-delay-1">
+        <form id="contact-form" class="bg-surface-container-lowest rounded-[2rem] p-8 shadow-sm border border-outline-variant/10 space-y-6">
+          <h3 class="text-2xl font-headline font-bold text-primary mb-2">Запишете се за консултация</h3>
+          <p class="text-on-surface-variant text-sm mb-6">Попълнете формата и ще се свържем с вас до 24 часа.</p>
+          <div>
+            <label class="block text-sm font-medium text-on-surface mb-2" for="name">Име</label>
+            <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-xl bg-surface-container-low border-0 text-on-surface placeholder:text-outline focus:ring-2 focus:ring-secondary" placeholder="Вашето име">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-on-surface mb-2" for="email">Имейл</label>
+            <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-xl bg-surface-container-low border-0 text-on-surface placeholder:text-outline focus:ring-2 focus:ring-secondary" placeholder="your@email.com">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-on-surface mb-2" for="phone">Телефон</label>
+            <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 rounded-xl bg-surface-container-low border-0 text-on-surface placeholder:text-outline focus:ring-2 focus:ring-secondary" placeholder="+359 ...">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-on-surface mb-2" for="service">Тема на запитването</label>
+            <select id="service" name="service" class="w-full px-4 py-3 rounded-xl bg-surface-container-low border-0 text-on-surface focus:ring-2 focus:ring-secondary">
+              <option value="">Изберете...</option>
+              <option value="consultation">Консултация</option>
+              <option value="telemedicine">Телемедицина</option>
+              <option value="corporate">Корпоративно решение</option>
+              <option value="other">Друго</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-on-surface mb-2" for="message">Съобщение</label>
+            <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 rounded-xl bg-surface-container-low border-0 text-on-surface placeholder:text-outline focus:ring-2 focus:ring-secondary resize-none" placeholder="Разкажете ни повече за вашето запитване..."></textarea>
+          </div>
+          <button type="submit" class="w-full bg-gradient-to-r from-primary to-primary-container text-on-primary py-4 rounded-xl font-headline font-bold text-lg hover:opacity-90 transition-opacity active:scale-[0.98]">
+            Изпратете
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="w-full pt-16 pb-8 bg-surface-container-low">
+  <div class="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-4 gap-12 text-sm leading-relaxed">
+    <div class="md:col-span-1">
+      <span class="text-lg font-bold text-primary mb-4 block font-headline">Д-р Иво Костов</span>
+      <p class="text-on-surface-variant max-w-xs">Персонализирана медицина за дълголетие. Прецизна диагностика и непрекъснат AI мониторинг.</p>
+    </div>
+    <div>
+      <h5 class="font-bold mb-4 uppercase tracking-widest text-[10px] text-on-surface-variant">Услуги</h5>
+      <ul class="space-y-2">
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="uslugi/personalizirano-dalgoletie.html">Персонализирано дълголетие</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="uslugi/bolnitsa-vkashti.html">Болница вкъщи</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="uslugi/peptidna-terapia-nad.html">Пептиди и NAD+</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="uslugi/telemedicina.html">Телемедицина</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="uslugi.html">Всички услуги →</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5 class="font-bold mb-4 uppercase tracking-widest text-[10px] text-on-surface-variant">Компания</h5>
+      <ul class="space-y-2">
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="za-nas.html">За нас</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="kak-rabotim.html">Как работим</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="tseni.html">Цени</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="kontakt.html">Контакт</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5 class="font-bold mb-4 uppercase tracking-widest text-[10px] text-on-surface-variant">Решения</h5>
+      <ul class="space-y-2">
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="reshenia/zdrav-kiosk.html">Здравен киоск</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="reshenia/korporativno-zdrave.html">Корпоративно здраве</a></li>
+      </ul>
+      <h5 class="font-bold mt-6 mb-4 uppercase tracking-widest text-[10px] text-on-surface-variant">Правна информация</h5>
+      <ul class="space-y-2">
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Поверителност</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Общи условия</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto px-6 md:px-12 mt-16">
+    <div class="bg-outline-variant/20 h-[1px] mb-8"></div>
+    <p class="text-on-surface-variant/50 text-center text-xs">&copy; 2026 Д-р Иво Костов. Всички права запазени.</p>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('active');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+document.getElementById('mobile-toggle')?.addEventListener('click', function() {
+  document.getElementById('mobile-menu')?.classList.toggle('hidden');
+});
+</script>
+<script src="js/nav.js"></script>
+</body>
+</html>

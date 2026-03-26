@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html class="light" lang="bg">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Персонализирано дълголетие — Био-дигитални близнаци и AI</title>
+<meta name="description" content="Измерване на биологична възраст, епигенетични часовници, AI протоколи за дълголетие. Д-р Иво Костов.">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "primary": "#001e40", "primary-container": "#003366", "on-primary": "#ffffff", "on-primary-container": "#799dd6",
+        "secondary": "#00696b", "secondary-container": "#56f5f8", "on-secondary": "#ffffff", "on-secondary-container": "#006e70",
+        "tertiary": "#002324", "tertiary-container": "#003a3b", "tertiary-fixed": "#6af7fa", "tertiary-fixed-dim": "#46dadd",
+        "secondary-fixed": "#5af8fb", "secondary-fixed-dim": "#2ddbde", "primary-fixed": "#d5e3ff", "primary-fixed-dim": "#a7c8ff",
+        "surface": "#f7f9fb", "surface-container-low": "#f2f4f6", "surface-container": "#eceef0", "surface-container-high": "#e6e8ea",
+        "surface-container-lowest": "#ffffff", "on-surface": "#191c1e", "on-surface-variant": "#43474f",
+        "outline": "#737780", "outline-variant": "#c3c6d1", "error": "#ba1a1a", "error-container": "#ffdad6", "surface-tint": "#3a5f94",
+      },
+      fontFamily: { "headline": ["Manrope"], "body": ["Inter"] },
+      borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1.5rem", "3xl": "2rem", "full": "9999px" },
+    },
+  },
+}
+</script>
+<style>
+.material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+.text-gradient { background: linear-gradient(to right, #001e40, #00696b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
+.reveal.active { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 100ms; }
+.reveal-delay-2 { transition-delay: 200ms; }
+.reveal-delay-3 { transition-delay: 300ms; }
+.reveal-delay-4 { transition-delay: 400ms; }
+
+/* === Scroll-Expansion Hero: Bio-Age Orb === */
+.seh-section { position:relative; min-height:100dvh; overflow:hidden; }
+.seh-bg { position:absolute; inset:0; z-index:0; }
+.seh-bg img { width:100%; height:100%; object-fit:cover; }
+
+/* Central orb */
+.bio-orb {
+  position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+  z-index:15; border-radius:50%; overflow:hidden;
+  box-shadow: 0 0 60px rgba(0,105,107,0.3), 0 0 120px rgba(0,105,107,0.1);
+  background: radial-gradient(circle at 30% 30%, #003366, #001e40 70%);
+  display:flex; align-items:center; justify-content:center;
+  transition: border-radius 0.6s cubic-bezier(0.22,1,0.36,1);
+}
+.bio-orb-inner { text-align:center; }
+
+/* Orbiting ring */
+@keyframes orbit-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.orb-ring {
+  position:absolute; inset:-12px; border:2px dashed rgba(106,247,250,0.2);
+  border-radius:50%; animation: orbit-spin 20s linear infinite; pointer-events:none;
+}
+.orb-ring::after {
+  content:''; position:absolute; top:-4px; left:50%; width:8px; height:8px;
+  background:#6af7fa; border-radius:50%; box-shadow:0 0 12px #6af7fa;
+}
+
+/* Counter animation for bio-age */
+@keyframes count-pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.03)} }
+
+/* Title */
+.seh-title { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); z-index:25;
+  display:flex; flex-direction:column; align-items:center; gap:0.25rem; pointer-events:none; }
+.seh-title-line {
+  font-family:'Manrope',sans-serif; font-weight:800; color:#fff; white-space:nowrap;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.6), 0 4px 40px rgba(0,0,0,0.4), 0 0 80px rgba(0,30,64,0.3);
+}
+
+@keyframes scroll-bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
+.seh-scroll-hint { animation: scroll-bounce 2s ease infinite; }
+
+/* Dashboard card that appears */
+@keyframes dash-slide { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+@keyframes bar-grow { from{width:0%} to{width:var(--target)} }
+.dash-bar { animation: bar-grow 1.8s cubic-bezier(.22,1,.36,1) forwards; }
+</style>
+</head>
+<body class="bg-surface font-body text-on-surface selection:bg-secondary-container">
+
+<!-- Nav -->
+<main class="pt-20">
+
+<!-- ===== SCROLL-EXPANSION HERO: Bio-Age Orb ===== -->
+<section class="seh-section" id="seh-hero">
+  <div class="seh-bg" id="seh-bg">
+    <img src="https://images.unsplash.com/photo-1614935151651-0bea6508db6b?w=1920&q=90&fit=crop" alt="Abstract medical data visualization">
+    <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60 backdrop-blur-[6px]"></div>
+  </div>
+
+  <!-- Title -->
+  <div class="seh-title" id="seh-title">
+    <span class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm px-4 py-1.5 rounded-full mb-3 border border-white/20" id="seh-badge">
+      <span class="material-symbols-outlined text-secondary-fixed text-sm" style="font-variation-settings:'FILL' 1">genetics</span>
+      <span class="text-white font-semibold text-xs uppercase tracking-widest">Персонализирано дълголетие</span>
+    </span>
+    <span class="seh-title-line text-5xl md:text-7xl lg:text-8xl" id="seh-line1">Вашият личен</span>
+    <span class="seh-title-line text-5xl md:text-7xl lg:text-8xl" id="seh-line2">план за живот</span>
+    <span class="text-base md:text-lg mt-4 font-medium max-w-lg text-center leading-relaxed inline-block px-5 py-2 rounded-xl" id="seh-sub" style="color:#fff;text-shadow:0 2px 16px rgba(0,0,0,0.7);background:rgba(0,0,0,0.25);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.1)">Измервам биологичната ви възраст. Коригирам преди да се появят симптоми.</span>
+  </div>
+
+  <!-- Central Bio-Age Orb -->
+  <div class="bio-orb" id="bio-orb" style="width:120px;height:120px;opacity:0;">
+    <div class="orb-ring"></div>
+    <div class="bio-orb-inner" id="orb-inner">
+      <p class="text-5xl md:text-7xl font-headline font-black text-white" id="orb-age">42</p>
+      <p class="text-[10px] md:text-xs font-bold uppercase tracking-widest text-secondary-fixed" id="orb-label">Bio Age</p>
+    </div>
+    <!-- Dashboard that appears inside the expanded orb -->
+    <div class="absolute inset-0 p-6 md:p-8 flex flex-col justify-between opacity-0" id="orb-dash">
+      <div class="flex items-center justify-between">
+        <div>
+          <p class="text-xs text-white/50 uppercase tracking-widest">Биологичен профил</p>
+          <p class="text-2xl font-headline font-extrabold text-white mt-1">Д-р Костов AI</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+          <span class="text-green-400 text-xs font-bold">LIVE</span>
+        </div>
+      </div>
+      <div class="flex items-center gap-8">
+        <div class="text-center">
+          <p class="text-6xl font-headline font-black text-white">34</p>
+          <p class="text-secondary-fixed text-xs font-bold uppercase tracking-widest">Био възраст</p>
+        </div>
+        <div class="w-px h-16 bg-white/10"></div>
+        <div class="text-center">
+          <p class="text-4xl font-headline font-bold text-white/40">42</p>
+          <p class="text-white/30 text-xs font-bold uppercase tracking-widest">Хрон. възраст</p>
+        </div>
+        <div class="w-px h-16 bg-white/10"></div>
+        <div class="text-center">
+          <p class="text-4xl font-headline font-bold text-secondary-fixed">-8.4</p>
+          <p class="text-secondary-fixed/60 text-xs font-bold uppercase">Години</p>
+        </div>
+      </div>
+      <div class="space-y-2" id="orb-bars">
+        <div class="flex items-center gap-3"><span class="text-[10px] text-white/40 w-20">Теломери</span><div class="flex-1 bg-white/10 rounded-full h-1.5"><div class="dash-bar bg-secondary-fixed h-full rounded-full" style="--target:95%"></div></div><span class="text-[10px] text-secondary-fixed font-bold">95%</span></div>
+        <div class="flex items-center gap-3"><span class="text-[10px] text-white/40 w-20">Епигенетика</span><div class="flex-1 bg-white/10 rounded-full h-1.5"><div class="dash-bar bg-blue-400 h-full rounded-full" style="--target:88%;animation-delay:.2s"></div></div><span class="text-[10px] text-blue-400 font-bold">88%</span></div>
+        <div class="flex items-center gap-3"><span class="text-[10px] text-white/40 w-20">GlycanAge</span><div class="flex-1 bg-white/10 rounded-full h-1.5"><div class="dash-bar bg-purple-400 h-full rounded-full" style="--target:82%;animation-delay:.4s"></div></div><span class="text-[10px] text-purple-400 font-bold">82%</span></div>
+        <div class="flex items-center gap-3"><span class="text-[10px] text-white/40 w-20">Метаболизъм</span><div class="flex-1 bg-white/10 rounded-full h-1.5"><div class="dash-bar bg-amber-400 h-full rounded-full" style="--target:76%;animation-delay:.6s"></div></div><span class="text-[10px] text-amber-400 font-bold">76%</span></div>
+      </div>
+      <div class="grid grid-cols-3 gap-2">
+        <div class="bg-white/8 rounded-xl p-3 text-center border border-white/5"><p class="text-[9px] text-white/30">Сърце</p><p class="text-xs font-bold text-green-400">Оптимално</p></div>
+        <div class="bg-white/8 rounded-xl p-3 text-center border border-white/5"><p class="text-[9px] text-white/30">Мозък</p><p class="text-xs font-bold text-blue-400">+18%</p></div>
+        <div class="bg-white/8 rounded-xl p-3 text-center border border-white/5"><p class="text-[9px] text-white/30">Възпаление</p><p class="text-xs font-bold text-amber-400">Ниско</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll hint -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-2" id="seh-hint">
+    <span class="text-white/60 text-xs font-medium uppercase tracking-widest">Scroll to explore</span>
+    <span class="material-symbols-outlined text-white/60 text-lg seh-scroll-hint">expand_more</span>
+  </div>
+
+  <!-- After expansion CTA -->
+  <div class="absolute bottom-0 left-0 w-full z-30 opacity-0" id="seh-content-after">
+    <div class="bg-gradient-to-t from-surface via-surface/95 to-transparent pt-16 pb-8">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-4">
+          <div class="w-10 h-10 bg-secondary/10 rounded-xl flex items-center justify-center">
+            <span class="material-symbols-outlined text-secondary" style="font-variation-settings:'FILL' 1">genetics</span>
+          </div>
+          <div>
+            <p class="font-headline font-bold text-primary text-base">Персонализирано дълголетие</p>
+            <p class="text-on-surface-variant text-sm">Епигенетика, AI диагностика и био-дигитален близнак</p>
+          </div>
+        </div>
+        <a href="../kontakt.html" class="inline-block bg-primary text-on-primary px-6 py-3 rounded-xl font-headline font-bold text-sm hover:shadow-lg transition-all active:scale-95 shrink-0 shadow-lg shadow-primary/20">Резервирайте консултация</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROBLEM ===== -->
+<section class="py-24 bg-surface">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <div class="max-w-3xl reveal">
+      <h2 class="text-4xl font-headline font-extrabold text-primary mb-6">Хронологичната възраст не казва нищо за здравето ви</h2>
+      <p class="text-on-surface-variant text-lg leading-relaxed">
+        Можете да сте на 50, но тялото ви да функционира като на 60 — или на 40. Разликата зависи от биологичната ви възраст: как всъщност се износват клетките, органите и системите ви. Стандартните годишни прегледи не измерват това. Аз го правя.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BIO-DIGITAL TWIN ===== -->
+<section class="py-24 bg-surface-container-lowest">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <div class="mb-16 reveal">
+      <h2 class="text-4xl font-headline font-extrabold text-primary mb-4">Био-дигитален близнак на вашето тяло</h2>
+      <p class="text-on-surface-variant max-w-2xl text-lg leading-relaxed">На базата на вашите биометрични данни, геномно секвениране и данни от протеомика и метаболомика, създавам виртуален модел на вашата физиология. Този „дигитален близнак" позволява на лекаря да тества лечебни подходи и лекарствени реакции виртуално, преди да се приложат върху вас.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-white/70 backdrop-blur-xl rounded-[2rem] p-8 shadow-sm reveal">
+        <div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center text-secondary mb-6">
+          <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">genetics</span>
+        </div>
+        <h3 class="text-lg font-headline font-bold text-primary mb-3">Епигенетични часовници</h3>
+        <p class="text-on-surface-variant text-sm">Чрез анализ на ДНК метилирането (Horvath's Clock) определям колко бързо се износва организмът ви. Това е златният стандарт за измерване на биологичната възраст.</p>
+      </div>
+      <div class="bg-white/70 backdrop-blur-xl rounded-[2rem] p-8 shadow-sm reveal reveal-delay-1">
+        <div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center text-secondary mb-6">
+          <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dna</span>
+        </div>
+        <h3 class="text-lg font-headline font-bold text-primary mb-3">Дължина на теломерите</h3>
+        <p class="text-on-surface-variant text-sm">Теломерите са защитни „капачки" на хромозомите. Колкото по-къси са, толкова по-близо са клетките до спиране на деленето. Проследявам дължината им и прилагам интервенции за забавяне на скъсяването.</p>
+      </div>
+      <div class="bg-white/70 backdrop-blur-xl rounded-[2rem] p-8 shadow-sm reveal reveal-delay-2">
+        <div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center text-secondary mb-6">
+          <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bloodtype</span>
+        </div>
+        <h3 class="text-lg font-headline font-bold text-primary mb-3">GlycanAge</h3>
+        <p class="text-on-surface-variant text-sm">Анализ на гликаните (захарни молекули) в кръвта, който разкрива нивото на възпаление — един от основните двигатели на стареенето.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== AI DIAGNOSTICS ===== -->
+<section class="py-24 bg-primary text-on-primary overflow-hidden relative">
+  <div class="absolute top-0 right-0 w-1/2 h-full opacity-15 pointer-events-none">
+    <img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=600&fit=crop" alt="Technology">
+  </div>
+  <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+    <div class="max-w-2xl space-y-8 reveal">
+      <div class="inline-flex items-center space-x-2 bg-secondary/20 px-4 py-1.5 rounded-full">
+        <span class="material-symbols-outlined text-tertiary-fixed text-sm" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+        <span class="text-tertiary-fixed font-semibold text-xs uppercase tracking-widest">AI Диагностика</span>
+      </div>
+      <h2 class="text-4xl md:text-5xl font-headline font-extrabold leading-tight">Изкуственият интелект като ваш втори лекар</h2>
+      <p class="text-lg text-primary-fixed-dim leading-relaxed">
+        AI агентите, които използвам, сканират вашите данни в реално време. Алгоритмите могат да предскажат настъпване на сърдечно-съдови събития или септичен шок до 48 часа преди появата на симптоми. Ежедневно AI анализира съня, храненето и маркерите ви за стрес, за да ви предложи конкретен план: кога да тренирате, кога да почивате, какво да приоритизирате.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SUBSCRIPTION MODEL ===== -->
+<section class="py-24 bg-surface">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <div class="flex flex-col lg:flex-row gap-16 items-center">
+      <div class="lg:w-1/2 reveal">
+        <h2 class="text-4xl font-headline font-extrabold text-primary mb-6">Дълголетие като услуга</h2>
+        <p class="text-on-surface-variant text-lg leading-relaxed mb-8">
+          Абонаментният модел включва месечен членски внос, който покрива 24/7 AI мониторинг, неограничени виртуални консултации и персонализиран план за дълголетие. Вие плащате, за да ви поддържам здрави — не само когато се разболеете.
+        </p>
+        <h3 class="text-xl font-headline font-bold text-primary mb-4">За кого е тази услуга?</h3>
+        <ul class="space-y-3">
+          <li class="flex items-start gap-3 text-on-surface-variant"><span class="material-symbols-outlined text-secondary text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>Хора 40+, които искат да остареят по-бавно и по-здравословно</li>
+          <li class="flex items-start gap-3 text-on-surface-variant"><span class="material-symbols-outlined text-secondary text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>Тези, които се чувстват „нормално" по лаборатории, но знаят, че не са оптимални</li>
+          <li class="flex items-start gap-3 text-on-surface-variant"><span class="material-symbols-outlined text-secondary text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>Активни професионалисти, които искат повече енергия и когнитивна яснота</li>
+          <li class="flex items-start gap-3 text-on-surface-variant"><span class="material-symbols-outlined text-secondary text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>Всеки, който предпочита превенция пред лечение</li>
+        </ul>
+      </div>
+      <div class="lg:w-1/2 reveal reveal-delay-1">
+        <div class="bg-surface-container-lowest p-8 rounded-[2.5rem] shadow-lg border border-outline-variant/10">
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-surface-container-low p-6 rounded-2xl text-center">
+              <span class="material-symbols-outlined text-secondary text-3xl mb-2" style="font-variation-settings: 'FILL' 1;">monitoring</span>
+              <p class="text-sm font-bold text-primary">24/7 AI мониторинг</p>
+            </div>
+            <div class="bg-surface-container-low p-6 rounded-2xl text-center">
+              <span class="material-symbols-outlined text-secondary text-3xl mb-2" style="font-variation-settings: 'FILL' 1;">videocam</span>
+              <p class="text-sm font-bold text-primary">Неограничени консултации</p>
+            </div>
+            <div class="bg-surface-container-low p-6 rounded-2xl text-center">
+              <span class="material-symbols-outlined text-secondary text-3xl mb-2" style="font-variation-settings: 'FILL' 1;">description</span>
+              <p class="text-sm font-bold text-primary">Персонализиран план</p>
+            </div>
+            <div class="bg-surface-container-low p-6 rounded-2xl text-center">
+              <span class="material-symbols-outlined text-secondary text-3xl mb-2" style="font-variation-settings: 'FILL' 1;">tune</span>
+              <p class="text-sm font-bold text-primary">Чести корекции</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FINAL CTA ===== -->
+<section class="py-24 bg-primary text-on-primary relative overflow-hidden">
+  <div class="absolute inset-0 opacity-10"><div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-secondary blur-[120px]"></div></div>
+  <div class="max-w-3xl mx-auto px-6 text-center relative z-10 reveal">
+    <h2 class="text-4xl md:text-5xl font-headline font-extrabold leading-tight mb-6">Не е нужно да правите всичко.<br>Просто спрете да чакате.</h2>
+    <p class="text-primary-fixed-dim text-lg mb-10 max-w-md mx-auto">Първата стъпка е разговор. Ще обсъдим вашето здраве и как мога да помогна.</p>
+    <a href="../kontakt.html" class="inline-block bg-white text-primary px-10 py-4 rounded-xl font-headline font-bold text-lg hover:shadow-2xl transition-all active:scale-95">Резервирайте консултация</a>
+  </div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="w-full pt-16 pb-8 bg-surface-container-low">
+  <div class="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-4 gap-12 text-sm leading-relaxed">
+    <div class="md:col-span-1">
+      <span class="text-lg font-bold text-primary mb-4 block font-headline">Д-р Иво Костов</span>
+      <p class="text-on-surface-variant max-w-xs">Персонализирана медицина за дълголетие. Прецизна диагностика и непрекъснат AI мониторинг.</p>
+    </div>
+    <div>
+      <h5 class="font-bold mb-4 uppercase tracking-widest text-[10px] text-on-surface-variant">Услуги</h5>
+      <ul class="space-y-2">
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="../uslugi/personalizirano-dalgoletie.html">Персонализирано дълголетие</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="../uslugi/bolnitsa-vkashti.html">Болница вкъщи</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="../uslugi/peptidna-terapia-nad.html">Пептиди и NAD+</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="../uslugi/telemedicina.html">Телемедицина</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="../uslugi.html">Всички услуги →</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5 class="font-bold mb-4 uppercase tracking-widest text-[10px] text-on-surface-variant">Компания</h5>
+      <ul class="space-y-2">
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="../za-nas.html">За нас</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="../kak-rabotim.html">Как работим</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="../tseni.html">Цени</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="../kontakt.html">Контакт</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5 class="font-bold mb-4 uppercase tracking-widest text-[10px] text-on-surface-variant">Решения</h5>
+      <ul class="space-y-2">
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="../reshenia/zdrav-kiosk.html">Здравен киоск</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="../reshenia/korporativno-zdrave.html">Корпоративно здраве</a></li>
+      </ul>
+      <h5 class="font-bold mt-6 mb-4 uppercase tracking-widest text-[10px] text-on-surface-variant">Правна информация</h5>
+      <ul class="space-y-2">
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Поверителност</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Общи условия</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto px-6 md:px-12 mt-16">
+    <div class="bg-outline-variant/20 h-[1px] mb-8"></div>
+    <p class="text-on-surface-variant/50 text-center text-xs">&copy; 2026 Д-р Иво Костов. Всички права запазени.</p>
+  </div>
+</footer>
+
+<script>
+// Reveal observer
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); observer.unobserve(entry.target); } });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ==========================================
+// Bio-Age Orb Scroll Expansion (spring physics)
+// ==========================================
+(function(){
+  let target = 0, current = 0, expanded = false, touchStartY = 0, rafId = null;
+  const SPRING = 0.07;
+  const mob = () => window.innerWidth < 768;
+
+  const bg = document.getElementById('seh-bg');
+  const orb = document.getElementById('bio-orb');
+  const orbInner = document.getElementById('orb-inner');
+  const orbDash = document.getElementById('orb-dash');
+  const line1 = document.getElementById('seh-line1');
+  const line2 = document.getElementById('seh-line2');
+  const badge = document.getElementById('seh-badge');
+  const sub = document.getElementById('seh-sub');
+  const hint = document.getElementById('seh-hint');
+  const after = document.getElementById('seh-content-after');
+  if (!orb) return;
+
+  function lerp(a, b, t) { return a + (b - a) * t; }
+
+  function render() {
+    current = lerp(current, target, SPRING);
+    if (Math.abs(current - target) < 0.001) current = target;
+    const p = current;
+    const m = mob();
+    const vw = window.innerWidth, vh = window.innerHeight;
+
+    // Orb: circle → rectangle expansion
+    const startSize = m ? 100 : 120;
+    const endW = m ? (vw * 0.9) : Math.min(vw * 0.65, 900);
+    const endH = m ? (vh * 0.6) : Math.min(vh * 0.7, 520);
+    const w = startSize + p * (endW - startSize);
+    const h = startSize + p * (endH - startSize);
+    orb.style.width = w + 'px';
+    orb.style.height = h + 'px';
+
+    // Fade orb in early
+    orb.style.opacity = Math.min(p * 6, 1);
+
+    // Circle → rounded rect
+    const borderR = Math.max(50 - p * 42, 8);
+    orb.style.borderRadius = (p < 0.5) ? '50%' : (borderR + '%');
+
+    // Orb ring fades out
+    const ring = orb.querySelector('.orb-ring');
+    if (ring) ring.style.opacity = Math.max(1 - p * 2.5, 0);
+
+    // Inner age number shrinks and moves to corner
+    if (p < 0.6) {
+      orbInner.style.opacity = Math.min(p * 5, 1);
+      orbInner.style.transform = 'scale(1)';
+      orbDash.style.opacity = 0;
+    } else {
+      const dp = (p - 0.6) / 0.4; // 0→1 for last 40%
+      orbInner.style.opacity = Math.max(1 - dp * 3, 0);
+      orbInner.style.transform = 'scale(' + (1 - dp * 0.3) + ')';
+      orbDash.style.opacity = Math.min(dp * 2, 1);
+    }
+
+    // Background fades
+    bg.style.opacity = 1 - p;
+
+    // Title splits
+    const tx = p * (m ? 50 : 100);
+    line1.style.transform = 'translateX(-' + tx + 'vw)';
+    line2.style.transform = 'translateX(' + tx + 'vw)';
+    const titleOp = Math.max(1 - p * 2.2, 0);
+    line1.style.opacity = titleOp;
+    line2.style.opacity = titleOp;
+    if (badge) badge.style.opacity = titleOp;
+    if (sub) { sub.style.opacity = titleOp; sub.style.transform = 'translateY(' + (p*20) + 'px)'; }
+    hint.style.opacity = Math.max(1 - p * 4, 0);
+    after.style.opacity = p > 0.6 ? Math.min((p - 0.6) / 0.25, 1) : 0;
+
+    // Animate bio-age counter (42 → 34) as orb appears
+    const ageEl = document.getElementById('orb-age');
+    if (ageEl && p > 0.05 && p < 0.6) {
+      const ageProgress = Math.min((p - 0.05) / 0.4, 1);
+      const age = Math.round(42 - ageProgress * 8);
+      ageEl.textContent = age;
+    }
+
+    if (Math.abs(current - target) > 0.0005) {
+      rafId = requestAnimationFrame(render);
+    } else { rafId = null; }
+  }
+
+  function startRender() { if (!rafId) rafId = requestAnimationFrame(render); }
+
+  window.addEventListener('wheel', function(e) {
+    if (expanded && e.deltaY < 0 && window.scrollY <= 5) { expanded = false; e.preventDefault(); }
+    else if (!expanded) {
+      e.preventDefault();
+      target = Math.min(Math.max(target + e.deltaY * 0.0008, 0), 1);
+      if (target >= 1) expanded = true;
+      startRender();
+    }
+  }, { passive: false });
+
+  window.addEventListener('touchstart', function(e) { touchStartY = e.touches[0].clientY; }, { passive: false });
+  window.addEventListener('touchmove', function(e) {
+    if (!touchStartY) return;
+    const dy = touchStartY - e.touches[0].clientY;
+    if (expanded && dy < -20 && window.scrollY <= 5) { expanded = false; e.preventDefault(); }
+    else if (!expanded) {
+      e.preventDefault();
+      target = Math.min(Math.max(target + dy * (dy < 0 ? 0.007 : 0.004), 0), 1);
+      if (target >= 1) expanded = true;
+      touchStartY = e.touches[0].clientY;
+      startRender();
+    }
+  }, { passive: false });
+  window.addEventListener('touchend', function() { touchStartY = 0; });
+  window.addEventListener('scroll', function() { if (!expanded) window.scrollTo(0, 0); });
+
+  render();
+})();
+</script>
+<script src="../js/nav.js"></script>
+</body>
+</html>

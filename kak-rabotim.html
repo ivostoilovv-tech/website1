@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html class="light" lang="bg">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Как работим — 5 стъпки към по-добро здраве</title>
+<meta name="description" content="Диагностика, цели, протокол, мониторинг, оптимизация. Ясен процес.">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "primary": "#001e40", "primary-container": "#003366", "on-primary": "#ffffff", "on-primary-container": "#799dd6",
+        "secondary": "#00696b", "secondary-container": "#56f5f8", "on-secondary": "#ffffff", "on-secondary-container": "#006e70",
+        "tertiary": "#002324", "tertiary-container": "#003a3b", "tertiary-fixed": "#6af7fa", "tertiary-fixed-dim": "#46dadd",
+        "secondary-fixed": "#5af8fb", "secondary-fixed-dim": "#2ddbde", "primary-fixed": "#d5e3ff", "primary-fixed-dim": "#a7c8ff",
+        "surface": "#f7f9fb", "surface-container-low": "#f2f4f6", "surface-container": "#eceef0", "surface-container-high": "#e6e8ea",
+        "surface-container-lowest": "#ffffff", "on-surface": "#191c1e", "on-surface-variant": "#43474f",
+        "outline": "#737780", "outline-variant": "#c3c6d1", "error": "#ba1a1a", "error-container": "#ffdad6", "surface-tint": "#3a5f94",
+      },
+      fontFamily: { "headline": ["Manrope"], "body": ["Inter"] },
+      borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1.5rem", "3xl": "2rem", "full": "9999px" },
+    },
+  },
+}
+</script>
+<style>
+.material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+.text-gradient { background: linear-gradient(to right, #001e40, #00696b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
+.reveal.active { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 100ms; }
+.reveal-delay-2 { transition-delay: 200ms; }
+.reveal-delay-3 { transition-delay: 300ms; }
+.reveal-delay-4 { transition-delay: 400ms; }
+details summary::-webkit-details-marker { display: none; }
+details summary { list-style: none; }
+details[open] summary .faq-icon { transform: rotate(180deg); }
+</style>
+</head>
+<body class="bg-surface font-body text-on-surface selection:bg-secondary-container">
+
+<!-- Nav -->
+<main class="pt-20">
+
+<!-- ===== HERO ===== -->
+<section class="relative min-h-[600px] flex items-center overflow-hidden bg-primary text-on-primary">
+  <div class="absolute inset-0 z-0">
+    <img class="w-full h-full object-cover opacity-15" src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=1600&h=900&fit=crop" alt="Digital health">
+    <div class="absolute inset-0 bg-gradient-to-r from-primary via-primary/90 to-transparent"></div>
+  </div>
+  <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10 py-24">
+    <div class="max-w-2xl space-y-6 reveal">
+      <div class="inline-flex items-center space-x-2 bg-white/10 px-4 py-1.5 rounded-full">
+        <span class="material-symbols-outlined text-secondary-fixed text-sm" style="font-variation-settings: 'FILL' 1;">route</span>
+        <span class="text-secondary-fixed font-semibold text-xs uppercase tracking-widest">Процес</span>
+      </div>
+      <h1 class="text-5xl md:text-7xl font-headline font-extrabold leading-[1.08] tracking-tight">
+        Пет стъпки към<br><span class="text-secondary-fixed">по-добро здраве</span>
+      </h1>
+      <p class="text-xl text-primary-fixed-dim max-w-xl leading-relaxed">
+        Ясен процес, без изненади. Ето какво да очаквате.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TIMELINE ===== -->
+<section class="py-24 bg-surface">
+  <div class="max-w-4xl mx-auto px-6 md:px-12">
+    <div class="space-y-0">
+      <!-- Step 1 -->
+      <div class="relative pl-16 pb-16 border-l-2 border-secondary/20 reveal">
+        <div class="absolute left-0 top-0 -translate-x-1/2 w-10 h-10 bg-secondary text-white rounded-full flex items-center justify-center font-headline font-bold text-sm">1</div>
+        <div class="bg-surface-container-lowest p-8 rounded-[2rem] shadow-sm border border-outline-variant/10">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="material-symbols-outlined text-secondary text-3xl" style="font-variation-settings: 'FILL' 1;">biotech</span>
+            <h3 class="text-2xl font-headline font-bold text-primary">Цялостна диагностика</h3>
+          </div>
+          <p class="text-on-surface-variant leading-relaxed">Започвам с лабораторни изследвания, които надхвърлят стандартните панели. Метаболитни и инсулинови маркери, хормони, маркери за сърдечно-съдов риск, възпалителни маркери, микронутриенти, функция на щитовидната жлеза, здраве на черния дроб и бъбреците. При желание — епигенетичен тест за биологична възраст.</p>
+        </div>
+      </div>
+      <!-- Step 2 -->
+      <div class="relative pl-16 pb-16 border-l-2 border-secondary/20 reveal reveal-delay-1">
+        <div class="absolute left-0 top-0 -translate-x-1/2 w-10 h-10 bg-secondary text-white rounded-full flex items-center justify-center font-headline font-bold text-sm">2</div>
+        <div class="bg-surface-container-lowest p-8 rounded-[2rem] shadow-sm border border-outline-variant/10">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="material-symbols-outlined text-secondary text-3xl" style="font-variation-settings: 'FILL' 1;">target</span>
+            <h3 class="text-2xl font-headline font-bold text-primary">Определяне на цели</h3>
+          </div>
+          <p class="text-on-surface-variant leading-relaxed">В разговор заедно определяме какво е най-важно за вас: повече енергия, по-добър сън, отслабване, когнитивна яснота, превенция на конкретно заболяване или цялостна оптимизация. Протоколът се изгражда около вашите приоритети.</p>
+        </div>
+      </div>
+      <!-- Step 3 -->
+      <div class="relative pl-16 pb-16 border-l-2 border-secondary/20 reveal reveal-delay-2">
+        <div class="absolute left-0 top-0 -translate-x-1/2 w-10 h-10 bg-secondary text-white rounded-full flex items-center justify-center font-headline font-bold text-sm">3</div>
+        <div class="bg-surface-container-lowest p-8 rounded-[2rem] shadow-sm border border-outline-variant/10">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="material-symbols-outlined text-secondary text-3xl" style="font-variation-settings: 'FILL' 1;">description</span>
+            <h3 class="text-2xl font-headline font-bold text-primary">Персонализиран протокол</h3>
+          </div>
+          <p class="text-on-surface-variant leading-relaxed">На базата на данните и целите ви: GLP-1, пептиди, NAD+, хормонална оптимизация, интервенции за сън, хранителни промени, насоки за движение и управление на стреса. Всеки план е различен, защото всяко тяло е различно.</p>
+        </div>
+      </div>
+      <!-- Step 4 -->
+      <div class="relative pl-16 pb-16 border-l-2 border-secondary/20 reveal reveal-delay-3">
+        <div class="absolute left-0 top-0 -translate-x-1/2 w-10 h-10 bg-secondary text-white rounded-full flex items-center justify-center font-headline font-bold text-sm">4</div>
+        <div class="bg-surface-container-lowest p-8 rounded-[2rem] shadow-sm border border-outline-variant/10">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="material-symbols-outlined text-secondary text-3xl" style="font-variation-settings: 'FILL' 1;">monitoring</span>
+            <h3 class="text-2xl font-headline font-bold text-primary">Непрекъснат мониторинг</h3>
+          </div>
+          <p class="text-on-surface-variant leading-relaxed">Смарт устройства и TaVIE платформата проследяват показателите ви ежедневно. Чести корекции на протокола вместо годишни прегледи. При отклонения — известие на лекаря в реално време.</p>
+        </div>
+      </div>
+      <!-- Step 5 -->
+      <div class="relative pl-16 reveal reveal-delay-4">
+        <div class="absolute left-0 top-0 -translate-x-1/2 w-10 h-10 bg-secondary text-white rounded-full flex items-center justify-center font-headline font-bold text-sm">5</div>
+        <div class="bg-surface-container-lowest p-8 rounded-[2rem] shadow-sm border border-outline-variant/10">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="material-symbols-outlined text-secondary text-3xl" style="font-variation-settings: 'FILL' 1;">tune</span>
+            <h3 class="text-2xl font-headline font-bold text-primary">Оптимизация и корекция</h3>
+          </div>
+          <p class="text-on-surface-variant leading-relaxed">Здравето не е статично. На всеки 6-8 седмици анализирам данните, сравнявам с предходни резултати и настройвам плана. Целта е непрекъснато подобрение, не поддържане на статуквото.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="py-24 bg-surface-container-lowest">
+  <div class="max-w-3xl mx-auto px-6 md:px-12">
+    <div class="mb-16 reveal">
+      <h2 class="text-4xl font-headline font-extrabold text-primary mb-4">Често задавани въпроси</h2>
+    </div>
+    <div class="space-y-4 reveal">
+      <details class="bg-white/70 backdrop-blur-xl rounded-[2rem] p-6 shadow-sm group">
+        <summary class="flex items-center justify-between cursor-pointer">
+          <span class="font-headline font-bold text-primary text-lg pr-4">Колко струва първоначалната консултация?</span>
+          <span class="material-symbols-outlined text-secondary faq-icon transition-transform duration-300">expand_more</span>
+        </summary>
+        <p class="text-on-surface-variant mt-4 leading-relaxed">Свържете се с мен за актуални цени. Първата консултация включва подробен разговор и план за диагностика.</p>
+      </details>
+      <details class="bg-white/70 backdrop-blur-xl rounded-[2rem] p-6 shadow-sm group">
+        <summary class="flex items-center justify-between cursor-pointer">
+          <span class="font-headline font-bold text-primary text-lg pr-4">Трябва ли да идвам в кабинет?</span>
+          <span class="material-symbols-outlined text-secondary faq-icon transition-transform duration-300">expand_more</span>
+        </summary>
+        <p class="text-on-surface-variant mt-4 leading-relaxed">Повечето от услугите се извършват дистанционно или вкъщи. За определени изследвания може да е необходимо посещение на лаборатория.</p>
+      </details>
+      <details class="bg-white/70 backdrop-blur-xl rounded-[2rem] p-6 shadow-sm group">
+        <summary class="flex items-center justify-between cursor-pointer">
+          <span class="font-headline font-bold text-primary text-lg pr-4">Колко време отнема да видя резултати?</span>
+          <span class="material-symbols-outlined text-secondary faq-icon transition-transform duration-300">expand_more</span>
+        </summary>
+        <p class="text-on-surface-variant mt-4 leading-relaxed">Зависи от вашето състояние и протокол. Повечето пациенти усещат промяна в енергията и съня в рамките на 4-6 седмици.</p>
+      </details>
+      <details class="bg-white/70 backdrop-blur-xl rounded-[2rem] p-6 shadow-sm group">
+        <summary class="flex items-center justify-between cursor-pointer">
+          <span class="font-headline font-bold text-primary text-lg pr-4">Работите ли със здравна каса?</span>
+          <span class="material-symbols-outlined text-secondary faq-icon transition-transform duration-300">expand_more</span>
+        </summary>
+        <p class="text-on-surface-variant mt-4 leading-relaxed">Свържете се с мен за подробности относно покритието на конкретните услуги.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FINAL CTA ===== -->
+<section class="py-24 bg-primary text-on-primary relative overflow-hidden">
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-secondary blur-[120px]"></div>
+  </div>
+  <div class="max-w-3xl mx-auto px-6 text-center relative z-10 reveal">
+    <h2 class="text-4xl md:text-5xl font-headline font-extrabold leading-tight mb-6">Готови ли сте за първата стъпка?</h2>
+    <p class="text-primary-fixed-dim text-lg mb-10 max-w-md mx-auto">Свържете се с мен и ще обсъдим вашето здраве, целите ви и как мога да помогна.</p>
+    <a href="kontakt.html" class="inline-block bg-white text-primary px-10 py-4 rounded-xl font-headline font-bold text-lg hover:shadow-2xl transition-all active:scale-95">Резервирайте консултация</a>
+  </div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="w-full pt-16 pb-8 bg-surface-container-low">
+  <div class="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-4 gap-12 text-sm leading-relaxed">
+    <div class="md:col-span-1">
+      <span class="text-lg font-bold text-primary mb-4 block font-headline">Д-р Иво Костов</span>
+      <p class="text-on-surface-variant max-w-xs">Персонализирана медицина за дълголетие. Прецизна диагностика и непрекъснат AI мониторинг.</p>
+    </div>
+    <div>
+      <h5 class="font-bold mb-4 uppercase tracking-widest text-[10px] text-on-surface-variant">Услуги</h5>
+      <ul class="space-y-2">
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="uslugi/personalizirano-dalgoletie.html">Персонализирано дълголетие</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="uslugi/bolnitsa-vkashti.html">Болница вкъщи</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="uslugi/peptidna-terapia-nad.html">Пептиди и NAD+</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="uslugi/telemedicina.html">Телемедицина</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="uslugi.html">Всички услуги →</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5 class="font-bold mb-4 uppercase tracking-widest text-[10px] text-on-surface-variant">Компания</h5>
+      <ul class="space-y-2">
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="za-nas.html">За нас</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="kak-rabotim.html">Как работим</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="tseni.html">Цени</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="kontakt.html">Контакт</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5 class="font-bold mb-4 uppercase tracking-widest text-[10px] text-on-surface-variant">Решения</h5>
+      <ul class="space-y-2">
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="reshenia/zdrav-kiosk.html">Здравен киоск</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="reshenia/korporativno-zdrave.html">Корпоративно здраве</a></li>
+      </ul>
+      <h5 class="font-bold mt-6 mb-4 uppercase tracking-widest text-[10px] text-on-surface-variant">Правна информация</h5>
+      <ul class="space-y-2">
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Поверителност</a></li>
+        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Общи условия</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto px-6 md:px-12 mt-16">
+    <div class="bg-outline-variant/20 h-[1px] mb-8"></div>
+    <p class="text-on-surface-variant/50 text-center text-xs">&copy; 2026 Д-р Иво Костов. Всички права запазени.</p>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('active');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+document.getElementById('mobile-toggle')?.addEventListener('click', function() {
+  document.getElementById('mobile-menu')?.classList.toggle('hidden');
+});
+</script>
+<script src="js/nav.js"></script>
+</body>
+</html>
