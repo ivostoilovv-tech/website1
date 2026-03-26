@@ -312,19 +312,14 @@ document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
   const afterContent = document.getElementById('seh-content-after');
   if (!center) return;
 
-  // Delta-time lerp — frame-rate independent, smooth on any PC
-  let lastTime = 0;
-  const SPEED = 8; // higher = faster catch-up
+  // Spring lerp — smooth like Framer
+  const SPRING = 0.14; // lower = smoother (0.05-0.12 range)
 
   function lerp(a, b, t) { return a + (b - a) * t; }
 
-  function render(timestamp) {
-    if (!lastTime) lastTime = timestamp;
-    const dt = Math.min((timestamp - lastTime) / 1000, 0.05); // cap at 50ms
-    lastTime = timestamp;
-    // Frame-rate independent smoothing
-    const factor = 1 - Math.exp(-SPEED * dt);
-    currentProgress = lerp(currentProgress, targetProgress, factor);
+  function render() {
+    // Spring interpolation
+    currentProgress = lerp(currentProgress, targetProgress, SPRING);
     // Snap if very close
     if (Math.abs(currentProgress - targetProgress) < 0.001) currentProgress = targetProgress;
 
@@ -363,15 +358,15 @@ document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 
     // Title: smooth split + fade
     const tx = p * (mob ? 50 : 100);
-    line1.style.transform = 'translate3d(-' + tx + 'vw,0,0)';
-    line2.style.transform = 'translate3d(' + tx + 'vw,0,0)';
+    line1.style.transform = 'translateX(-' + tx + 'vw)';
+    line2.style.transform = 'translateX(' + tx + 'vw)';
     const titleOp = Math.max(1 - p * 2.2, 0);
     line1.style.opacity = titleOp;
     line2.style.opacity = titleOp;
     const badge = document.getElementById('seh-badge');
     const sub = document.getElementById('seh-sub');
     if (badge) badge.style.opacity = titleOp;
-    if (sub) { sub.style.opacity = titleOp; sub.style.transform = 'translate3d(0,' + (p * 20) + 'px,0)'; }
+    if (sub) { sub.style.opacity = titleOp; sub.style.transform = 'translateY(' + (p * 20) + 'px)'; }
 
     hint.style.opacity = Math.max(1 - p * 4, 0);
 
