@@ -312,75 +312,75 @@ document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
   const afterContent = document.getElementById('seh-content-after');
   if (!center) return;
 
-  // Delta-time lerp — frame-rate independent, smooth on any PC
+  // GPU-accelerated render — uses transform only (no layout thrash)
   let lastTime = 0;
-  const SPEED = 4.5; // higher = faster catch-up
+  const SPEED = 8; // fast response
 
-  function lerp(a, b, t) { return a + (b - a) * t; }
+  // Cache badge/sub/inner refs once
+  const badge = document.getElementById('seh-badge');
+  const sub = document.getElementById('seh-sub');
+  const inner = document.getElementById('seh-panel-inner');
+
+  // Pre-set will-change for GPU compositing
+  [imgEl, panelEl, line1, line2, bg, center].forEach(el => {
+    if (el) el.style.willChange = 'transform, opacity';
+  });
+
+  // Cache layout values (recalc on resize)
+  let cachedVW, cachedVH, cachedMob, startW, endW, startH, endH;
+  function cacheLayout() {
+    cachedVW = window.innerWidth;
+    cachedVH = window.innerHeight;
+    cachedMob = cachedVW < 768;
+    startW = cachedMob ? 130 : 160;
+    endW = cachedMob ? (cachedVW * 0.46) : Math.min(cachedVW * 0.38, 600);
+    startH = cachedMob ? 180 : 220;
+    endH = cachedMob ? (cachedVH * 0.65) : Math.min(cachedVH * 0.72, 520);
+  }
+  cacheLayout();
+  window.addEventListener('resize', cacheLayout);
 
   function render(timestamp) {
     if (!lastTime) lastTime = timestamp;
-    const dt = Math.min((timestamp - lastTime) / 1000, 0.05); // cap at 50ms
+    const dt = Math.min((timestamp - lastTime) / 1000, 0.05);
     lastTime = timestamp;
-    // Frame-rate independent smoothing
     const factor = 1 - Math.exp(-SPEED * dt);
-    currentProgress = lerp(currentProgress, targetProgress, factor);
-    // Snap if very close
+    currentProgress += (targetProgress - currentProgress) * factor;
     if (Math.abs(currentProgress - targetProgress) < 0.001) currentProgress = targetProgress;
 
     const p = currentProgress;
-    const mob = isMobile();
-    const vw = window.innerWidth;
-    const vh = window.innerHeight;
 
-    // Media sizes
-    const startW = mob ? 130 : 160;
-    const endW = mob ? (vw * 0.46) : Math.min(vw * 0.38, 600);
-    const startH = mob ? 180 : 220;
-    const endH = mob ? (vh * 0.65) : Math.min(vh * 0.72, 520);
-    const w = startW + p * (endW - startW);
-    const h = startH + p * (endH - startH);
-
-    imgEl.style.width = w + 'px';
-    imgEl.style.height = h + 'px';
-    panelEl.style.width = w + 'px';
-    panelEl.style.height = h + 'px';
-
-    // Cards fade in + scale up from invisible
-    const cardOpacity = Math.min(p * 5, 1); // fully visible by 20% scroll
-    const cardScale = 0.9 + Math.min(p * 0.5, 0.1); // 0.9 → 1.0
-    imgEl.style.opacity = cardOpacity;
-    panelEl.style.opacity = cardOpacity;
-    imgEl.style.transform = 'scale(' + cardScale + ')';
-    panelEl.style.transform = 'scale(' + cardScale + ')';
-
+    // Use transform scale instead of width/height (GPU only, no reflow)
+    const scaleX_img = (startW + p * (endW - startW)) / startW;
+    const scaleY_img = (startH + p * (endH - startH)) / startH;
+    const cardOp = Math.min(p * 5, 1);
     const radius = Math.max(20 - p * 10, 10);
+
+    imgEl.style.transform = 'scale(' + scaleX_img + ',' + scaleY_img + ')';
+    imgEl.style.opacity = cardOp;
     imgEl.style.borderRadius = radius + 'px';
+    panelEl.style.transform = 'scale(' + scaleX_img + ',' + scaleY_img + ')';
+    panelEl.style.opacity = cardOp;
     panelEl.style.borderRadius = radius + 'px';
 
     center.style.gap = (8 + p * 20) + 'px';
     bg.style.opacity = 1 - p;
 
-    // Title: smooth split + fade
-    const tx = p * (mob ? 50 : 100);
-    line1.style.transform = 'translateX(-' + tx + 'vw)';
-    line2.style.transform = 'translateX(' + tx + 'vw)';
+    // Title split + fade (transform only)
+    const tx = p * (cachedMob ? 50 : 100);
     const titleOp = Math.max(1 - p * 2.2, 0);
+    line1.style.transform = 'translate3d(-' + tx + 'vw,0,0)';
     line1.style.opacity = titleOp;
+    line2.style.transform = 'translate3d(' + tx + 'vw,0,0)';
     line2.style.opacity = titleOp;
-    const badge = document.getElementById('seh-badge');
-    const sub = document.getElementById('seh-sub');
+
     if (badge) badge.style.opacity = titleOp;
-    if (sub) { sub.style.opacity = titleOp; sub.style.transform = 'translateY(' + (p * 20) + 'px)'; }
+    if (sub) { sub.style.opacity = titleOp; sub.style.transform = 'translate3d(0,' + (p * 20) + 'px,0)'; }
 
     hint.style.opacity = Math.max(1 - p * 4, 0);
-
     afterContent.style.opacity = p > 0.6 ? Math.min((p - 0.6) / 0.25, 1) : 0;
-
-    const inner = document.getElementById('seh-panel-inner');
     if (inner) inner.style.opacity = Math.min(p * 2.5, 1);
 
-    // Keep looping while animating
     if (Math.abs(currentProgress - targetProgress) > 0.0005) {
       rafId = requestAnimationFrame(render);
     } else {
