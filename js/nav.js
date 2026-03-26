@@ -150,9 +150,9 @@
           </div>
         </div>
 
-        <a class="${plainLinkClass('kak-rabotim')}" href="${prefix}kak-rabotim.html">Как работим</a>
+        <a class="${plainLinkClass('kak-rabotim')}" href="${prefix}kak-rabotim.html">Как работя</a>
         <a class="${plainLinkClass('tseni')}" href="${prefix}tseni.html">Цени</a>
-        <a class="${plainLinkClass('za-nas')}" href="${prefix}za-nas.html">За нас</a>
+        <a class="${plainLinkClass('za-nas')}" href="${prefix}za-nas.html">За мен</a>
       </div>
 
       <div class="flex items-center gap-3">
@@ -199,9 +199,9 @@
         <a href="${prefix}reshenia/zdrav-kiosk.html" class="block px-4 py-3 rounded-xl text-on-surface hover:bg-secondary/5 transition-colors text-sm">Мобилен здравен киоск</a>
         <a href="${prefix}reshenia/korporativno-zdrave.html" class="block px-4 py-3 rounded-xl text-on-surface hover:bg-secondary/5 transition-colors text-sm">Корпоративно здраве</a>
         <div class="h-px bg-outline-variant/10 my-2"></div>
-        <a href="${prefix}kak-rabotim.html" class="block px-4 py-3 rounded-xl text-on-surface hover:bg-secondary/5 transition-colors text-sm">Как работим</a>
+        <a href="${prefix}kak-rabotim.html" class="block px-4 py-3 rounded-xl text-on-surface hover:bg-secondary/5 transition-colors text-sm">Как работя</a>
         <a href="${prefix}tseni.html" class="block px-4 py-3 rounded-xl text-on-surface hover:bg-secondary/5 transition-colors text-sm">Цени</a>
-        <a href="${prefix}za-nas.html" class="block px-4 py-3 rounded-xl text-on-surface hover:bg-secondary/5 transition-colors text-sm">За нас</a>
+        <a href="${prefix}za-nas.html" class="block px-4 py-3 rounded-xl text-on-surface hover:bg-secondary/5 transition-colors text-sm">За мен</a>
         <div class="pt-2">
           <a href="${prefix}kontakt.html" class="block bg-primary text-on-primary px-6 py-3 rounded-xl font-headline font-semibold text-sm text-center">Резервирайте час</a>
         </div>
