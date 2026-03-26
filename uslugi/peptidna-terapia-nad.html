@@ -312,14 +312,19 @@ document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
   const afterContent = document.getElementById('seh-content-after');
   if (!center) return;
 
-  // Spring lerp — smooth like Framer
-  const SPRING = 0.08; // lower = smoother (0.05-0.12 range)
+  // Delta-time lerp — frame-rate independent, smooth on any PC
+  let lastTime = 0;
+  const SPEED = 4.5; // higher = faster catch-up
 
   function lerp(a, b, t) { return a + (b - a) * t; }
 
-  function render() {
-    // Spring interpolation
-    currentProgress = lerp(currentProgress, targetProgress, SPRING);
+  function render(timestamp) {
+    if (!lastTime) lastTime = timestamp;
+    const dt = Math.min((timestamp - lastTime) / 1000, 0.05); // cap at 50ms
+    lastTime = timestamp;
+    // Frame-rate independent smoothing
+    const factor = 1 - Math.exp(-SPEED * dt);
+    currentProgress = lerp(currentProgress, targetProgress, factor);
     // Snap if very close
     if (Math.abs(currentProgress - targetProgress) < 0.001) currentProgress = targetProgress;
 

@@ -357,8 +357,8 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 // Bio-Age Orb Scroll Expansion (spring physics)
 // ==========================================
 (function(){
-  let target = 0, current = 0, expanded = false, touchStartY = 0, rafId = null;
-  const SPRING = 0.07;
+  let target = 0, current = 0, expanded = false, touchStartY = 0, rafId = null, lastTime = 0;
+  const SPEED = 4.5; // frame-rate independent
   const mob = () => window.innerWidth < 768;
 
   const bg = document.getElementById('seh-bg');
@@ -375,8 +375,12 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
   function lerp(a, b, t) { return a + (b - a) * t; }
 
-  function render() {
-    current = lerp(current, target, SPRING);
+  function render(timestamp) {
+    if (!lastTime) lastTime = timestamp;
+    const dt = Math.min((timestamp - lastTime) / 1000, 0.05);
+    lastTime = timestamp;
+    const factor = 1 - Math.exp(-SPEED * dt);
+    current = lerp(current, target, factor);
     if (Math.abs(current - target) < 0.001) current = target;
     const p = current;
     const m = mob();
